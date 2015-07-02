@@ -55,14 +55,14 @@ class kallithea (
   $app_user = $::kallithea::params::app_user,
   $app_root = $::kallithea::params::app_root,
   $repo_root = $::kallithea::params::repo_root,
-  $config = undef,
-  $ldap_support = true,
-  $service_ensure = true,
-  $service_enable = true,
-  $seed_db = false,
-  $admin_user = 'admin',
-  $admin_pass = 'adminpw',
-  $admin_mail = "kallithea@${::fqdn}",
+  $config = $::kallithea::params::config,
+  $ldap_support = $::kallithea::params::ldap_support,
+  $service_ensure = $::kallithea::params::service_ensure,
+  $service_enable = $::kallithea::params::service_enable,
+  $seed_db = $::kallithea::params::seed_db,
+  $admin_user = $::kallithea::params::admin_user,
+  $admin_pass = $::kallithea::params::admin_pass,
+  $admin_mail = $::kallithea::params::admin_mail,
 ) inherits ::kallithea::params {
 
   ##################################################
