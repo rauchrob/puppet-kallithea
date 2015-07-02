@@ -1,0 +1,28 @@
+{
+  "name": "rauchrob-kallithea",
+  "version": "0.1.0",
+  "author": "Robert Rauch (GNS Systems)",
+  "summary": "Setup Kallithea (kallithea-scm.org)",
+  "license": "Apache-2.0",
+  "source": "https://github.com/rauchrob/puppet-kallithea",
+  "project_page": "https://github.com/rauchrob/puppet-kallithea",
+  "issues_url": "https://github.com/rauchrob/puppet-kallithea/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "stankevich/python",
+      "version_requirement": ">= 1.9.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ]
+}

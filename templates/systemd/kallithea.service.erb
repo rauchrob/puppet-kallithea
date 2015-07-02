@@ -1,0 +1,12 @@
+<%- app_root = scope.lookupvar('kallithea::app_root') -%>
+[Unit]
+Description=Kallithea SCM Web Service
+After=network.target
+
+[Service]
+User=<%= scope.lookupvar('kallithea::app_user') %>
+WorkingDirecroty = <%= app_root %>
+ExecStart=<%= app_root %>/venv/bin/paster serve <%= app_root %>/kallithea.ini
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+# kallithea - run the kallithea daemon as an upstart job
+# Change variables/paths as necessary and place file /etc/init/kallithea.conf
+
+description     "Kallithea SCM Web Service"
+author          "Matt Zuba <matt.zuba@goodwillaz.org"
+
+start on (local-filesystems and runlevel [2345])
+stop on runlevel [!2345]
+
+respawn
+
+umask 0022
+<% app_root = scope.lookupvar('kallithea::app_root') %>
+env PIDFILE=/var/run/kallithea.pid
+env LOGFILE=/var/log/kallithea/kallithea.log
+env APPINI=<%= app_root %>/production.ini
+env HOME=<%= app_root %>
+env USER=kallithea
+env GROUP=kallithea
+
+exec /var/hg/.virtualenvs/kallithea/bin/paster serve --user=$USER --group=$GROUP --pid-file=$PIDFILE --log-file=$LOGFILE $APPINI
+
+post-stop script
+        rm -f $PIDFILE
+end script
+
