@@ -23,9 +23,10 @@ Kallithea is *"a free software source code management system supporting two lead
 
 ### What kallithea affects
 
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
+* Required Packages for installing the kallithea python package (platform dependent) 
+* A Kallithea User under which Kallithea will run
+* The Kallithea Users home, containing a Python virtualenv in which Kallithea gets installed
+* The Kallithea Service
 
 ### Setup Requirements **OPTIONAL**
 
