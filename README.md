@@ -36,7 +36,7 @@ The installation of Kallithea requires `virtualenv` and `pip` to be installed.
 
 To get you up and running fast, simply declare
 
-```
+```puppet
 class { 'kallithea':
   seed_db => true,
 }
@@ -72,7 +72,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 
 ## Limitations
 
-This module has beed developed for and successfully tested only on RHEL7, using with Kallithea v0.2.1. As such, currently only a systemd service definition is provided. In principle, however, it should be easy to modify the module for use with other platforms as well.
+This module has beed developed for and successfully tested only on RHEL7, using Kallithea v0.2.1. Consequently, currently only a systemd service definition is provided. In principle, however, it should be easy to modify the module for use with other platforms as well.
 
 ## Development
 
