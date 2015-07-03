@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 User=<%= scope.lookupvar('kallithea::app_user') %>
-WorkingDirecroty = <%= app_root %>
+WorkingDirectory=<%= app_root %>
 ExecStart=<%= app_root %>/venv/bin/paster serve <%= app_root %>/kallithea.ini
 
 [Install]
