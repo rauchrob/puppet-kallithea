@@ -92,6 +92,14 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `service_enable`: Whether to enable the Kallithea service on boot. Defaults to `true`.
 * `service_ensure`: Whether to start Kallithea as a service. Defaults to `true`.
 
+#### Define `kallithea::package`
+
+This define lets install addons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
+
+##### Parameters 
+
+* `title`: The name of the Python package.
+
 ## Limitations
 
 This module has been developed for and successfully tested only on CentOS/RHEL 7, using Kallithea v0.2.1. Consequently, currently only a Systemd service definition is provided. In principle, however, it should be easy to modify the module for use with other platforms as well.
