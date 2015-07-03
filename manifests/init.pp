@@ -50,6 +50,10 @@
 # [*admin_mail*]
 #   Mail of the initial admin user, created during database initialization.
 #
+# [*manage_python*]
+#   Whether to manage installation of Python and required tools (virtualenv and
+#   pip). Needs the stankevich/python module
+#
 
 class kallithea (
   $admin_mail = $params::admin_mail,
