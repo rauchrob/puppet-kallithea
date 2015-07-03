@@ -28,7 +28,11 @@ class kallithea::seed_db (
   $mail = "kallithea@${::fqdn}",
 ) {
   
-  # TODO: validate parameters
+  validate_string(
+    $user,
+    $pass,
+    $mail,
+  )
 
   $app_root = $::kallithea::app_root
   $repo_root = $::kallithea::repo_root
