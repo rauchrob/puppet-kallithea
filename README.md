@@ -24,7 +24,7 @@ Kallithea is *"a free software source code management system supporting two lead
 ### What kallithea affects
 
 * Required Packages for installing the kallithea python package (platform dependent) 
-* A Kallithea User under which Kallithea will run
+* The user under which Kallithea will run
 * The Kallithea Users home, containing a Python virtualenv in which Kallithea gets installed
 * The Kallithea Service
 
@@ -69,6 +69,24 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 ### Defines
 
 * [`kallithea::package`](#class-kallitheapackage)
+
+#### Class `kallithea`
+
+##### Parameters (all optional)
+
+* `admin_mail`: Mail of the initial admin user, created during database initialization. Defaults to `root@${::fqdn}`.
+* `admin_pass`: Password of the initial admin user, created during database initialization. Defaults to `adminpw`.
+* `admin_user`: Name of the initial admin user, created during database initialization. Defaults to `admin`.
+* `app_root`: The directory under which Kallithea will be installed (i.e. the home  directory of `$app_user`). Defaults to `/srv/kallithea`.
+* `app_user`: The user under which Kallithea will be installed. Defaults to `kallithea`.
+* `config`: If not `undef`, this will the content of Kallitheas main configuration file "${app_root}/kallithea.ini". Otherwise, it will be initialized with Kallitheas defaults during installation. Defaults to `undef`
+* `ldap_support`: If set to true, the python-ldap package and its dependencies will be installed into Kallitheas python environment. Defaults to `true`.
+* `manage_python`: Wheather to install Python using the [`stankevich/python`](https://github.com/stankevich/puppet-python) module. Defaults to `true`.
+* `proxy`: If not `undef`, this will be the HTTP proxy settings which are used when installing Kallithea via pip. Defaults to `undef`.
+* `repo_root`: The directory under which Kallithea will put the repositories. Defaults to `${app_root}/repos`.
+* `seed_db`: Whether to initialize Kallitheas database during installation. A lockfile is created to prevent subsequent database resets (see documentation of the kallithea::seed_db class). Defaults to `false`.
+* `service_enable`: Whether to enable the Kallithea service on boot. Defaults to `true`.
+* `service_ensure`: Whether to start Kallithea as a service. Defaults to `true`.
 
 ## Limitations
 
