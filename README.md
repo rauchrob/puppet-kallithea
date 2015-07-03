@@ -92,6 +92,20 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `service_enable`: Whether to enable the Kallithea service on boot. Defaults to `true`.
 * `service_ensure`: Whether to start Kallithea as a service. Defaults to `true`.
 
+**Note:** The values of the parameters `admin_mail`, `admin_pass` and `admin_user` are only relevant if you are using `seed_db => true`.
+
+#### Class `kallithea::seed_db`
+
+This class lets you initialize the database backing Kallithea. You have to do this at least once in order to use Kallithea. It is safe to let `seed_db` stay on `true` after Kallithea has been installed initially, as long as you don't remove the lockfile under `${app_root}/.db_initialized`.
+
+**Attention:** Initializing Kallitheas database will overwrite purge any previous data!
+
+##### Parameters
+
+* `user`: Mail of the initial admin user, created during database initialization. Defaults to `root@${::fqdn}`.
+* `pass`: Password of the initial admin user, created during database initialization. Defaults to `adminpw`.
+* `mail`: Name of the initial admin user, created during database initialization. Defaults to `admin`.
+
 #### Define `kallithea::package`
 
 This define lets install addons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
