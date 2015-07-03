@@ -1,6 +1,6 @@
 {
   "name": "rauch-kallithea",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "author": "Robert Rauch (GNS Systems)",
   "summary": "Setup Kallithea (kallithea-scm.org)",
   "license": "Apache-2.0",
