@@ -2,5 +2,6 @@ fixtures:
   repositories:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     python: "https://github.com/stankevich/puppet-python.git"
+    epel:   "https://github.com/stahnma/puppet-module-epel.git"
   symlinks:
     kallithea: "#{source_dir}"

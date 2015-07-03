@@ -40,6 +40,15 @@ class kallithea::install {
     notify => Service['kallithea'],
   }
 
+  if $::kallithea::manage_python {
+    class { 'python':
+      dev        => true,
+      pip        => true,
+      virtualenv => true,
+      before     => Python::Virtualenv["${::kallithea::app_root}/venv"],
+    }
+  }
+
   python::virtualenv { "${::kallithea::app_root}/venv":
     systempkgs => false,
     owner      => $::kallithea::app_user,

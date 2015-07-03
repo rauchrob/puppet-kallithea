@@ -18,6 +18,7 @@ describe 'kallithea' do
           it { is_expected.to contain_class('kallithea::config') }
 
           it { is_expected.to contain_file('/srv/kallithea/kallithea.ini').with_content(nil) }
+          it { is_expected.to contain_class('python').that_comes_before('Python::Virtualenv[/srv/kallithea/venv]') }
           it { should contain_python__pip('python-ldap@/srv/kallithea/venv') }
         end
 
@@ -33,6 +34,13 @@ describe 'kallithea' do
 
           it { is_expected.to compile.with_all_deps }
           it { should_not contain_package('openldap-devel') }
+        end
+
+        context "kallithea class with manage_python = false " do
+          let(:params) {{ :manage_python => false }}
+
+          it { is_expected.to compile.with_all_deps }
+          it { should_not contain_class('python') }
         end
       end
     end
