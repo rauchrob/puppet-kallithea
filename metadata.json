@@ -19,15 +19,29 @@
   ],
   "operatingsystem_support": [
     {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "7"
       ]
     },
     {
-      "operatingsystem": "CentOS",
+      "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "7"
+        "12.04",
+        "14.04"
       ]
     }
   ]
