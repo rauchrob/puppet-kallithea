@@ -43,7 +43,7 @@ class kallithea::install {
   if $::kallithea::manage_python {
     class { 'python':
       dev        => true,
-      pip        => true,
+      pip        => false,
       virtualenv => true,
       before     => Python::Virtualenv["${::kallithea::app_root}/venv"],
     }
