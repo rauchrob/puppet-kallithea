@@ -1,3 +1,7 @@
+# Puppet-Kallithea
+
+[![Build Status](https://travis-ci.org/rauchrob/puppet-kallithea.svg?branch=master)](https://travis-ci.org/rauchrob/puppet-kallithea)
+
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -17,7 +21,7 @@ This module lets you setup a [Kallithea](https://kallithea-scm.org) instance. It
 
 ## Module Description
 
-Kallithea is *"a free software source code management system supporting two leading version control systems, Mercurial and Git.* This module allows you to install, configure and run a working Kallithea instance.
+Kallithea is *"a free software source code management system supporting two leading version control systems, Mercurial and Git."* This module allows you to install, configure and run a working Kallithea instance. It does not make any attempt to setup an Apache reverse proxy or something similiar, so this is up to you.
 
 ## Setup
 
