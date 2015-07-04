@@ -46,16 +46,21 @@ class kallithea::install (
     notify => Service['kallithea'],
   }
 
+  ############################################################
+  # Python Setup
+
+  $venv = "${app_root}/venv"
+
   if $manage_python {
     class { 'python':
       dev        => true,
       pip        => false,
       virtualenv => true,
-      before     => Python::Virtualenv["${app_root}/venv"],
+      before     => Python::Virtualenv[$venv],
     }
   }
 
-  python::virtualenv { "${app_root}/venv":
+  python::virtualenv { $venv:
     systempkgs => false,
     owner      => $app_user,
     group      => $app_user,

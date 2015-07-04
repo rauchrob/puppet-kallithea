@@ -23,10 +23,10 @@
 #
 
 class kallithea::seed_db (
-  $user = 'admin',
-  $pass = 'adminpw',
-  $mail = "kallithea@${::fqdn}",
-) {
+  $user = $::kallithea::params::admin_user,
+  $pass = $::kallithea::params::admin_pass,
+  $mail = $::kallithea::params::admin_mail,
+) inherits ::kallithea::params {
   
   validate_string(
     $user,
