@@ -17,16 +17,18 @@ describe 'kallithea class' do
     end
 
     describe service('kallithea') do
-      it { is_expected.to be_enabled }
       it { is_expected.to be_running }
+      # the following will fail if using simple init script on systems using upstart
+      #it { is_expected.to be_enabled }
     end
 
     describe port(5000) do
       it { should be_listening }
     end
 
-    describe command('curl localhost:5000 2>&1 | grep -iq kallithea') do
+    describe command('curl -I localhost:5000 2> /dev/null | head -n1') do
       its(:exit_status) { should eq 0 }
+      its(:stdout) { should eq "HTTP/1.1 200 OK\n" }
     end
 
   end
