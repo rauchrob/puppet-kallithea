@@ -18,8 +18,7 @@ class kallithea::params {
   $service_ensure = true
 
   case $::osfamily {
-    'RedHat': {
-    }
+    /CentOS|RedHat|Debian|Ubuntu/: {}
     default: {
       fail("${::operatingsystem} not supported")
     }
