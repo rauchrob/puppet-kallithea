@@ -10,6 +10,5 @@ class kallithea::service (
   service { 'kallithea':
     ensure   => $service_ensure,
     enable   => $service_enable,
-    provider => 'systemd',
   }
 }
