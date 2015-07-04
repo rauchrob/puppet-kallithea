@@ -18,7 +18,22 @@ class kallithea::params {
   $service_ensure = true
 
   case $::osfamily {
-    /CentOS|RedHat|Debian|Ubuntu/: {}
+    /CentOS|RedHat/: {
+      $packages = ['gcc']
+      $ldap_packages = ['openldap-devel']
+      $install_pip = false
+      $service_provider = $operatingsystemmajrelease ? {
+        '7'     => 'systemd',
+        default => 'init',
+      }
+    }
+    'Debian': {
+      $packages = []
+      $install_pip = true
+      $ldap_packages = ['libldap2-dev', 'libsasl2-dev']
+      $service_provider = 'init'
+    }
+
     default: {
       fail("${::operatingsystem} not supported")
     }

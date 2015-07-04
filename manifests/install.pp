@@ -10,13 +10,6 @@ class kallithea::install (
   $repo_root     = $::kallithea::repo_root,
 ) {
 
-  $packages = $ldap_support ? {
-    true  => ['gcc', 'openldap-devel'],
-    false => ['gcc'],
-  }
-
-  ensure_packages($packages)
-
   user { $app_user:
     ensure => present,
     home   => $app_root,
@@ -34,16 +27,27 @@ class kallithea::install (
     owner  => $app_user,
   }
 
-  file { '/usr/lib/systemd/system/kallithea.service':
-    ensure  => file,
-    mode    => '0644',
-    content => template('kallithea/systemd/kallithea.service.erb'),
-  }
+  case $params::service_provider {
+    'systemd': {
+      file { '/usr/lib/systemd/system/kallithea.service':
+        ensure  => file,
+        mode    => '0644',
+        content => template('kallithea/systemd/kallithea.service.erb'),
+      }
 
-  file { '/etc/systemd/system/kallithea.service':
-    ensure => link,
-    target => '/usr/lib/systemd/system/kallithea.service',
-    notify => Service['kallithea'],
+      file { '/etc/systemd/system/kallithea.service':
+        ensure => link,
+        target => '/usr/lib/systemd/system/kallithea.service',
+        notify => Service['kallithea'],
+      }
+    }
+    'init': {
+      file { '/etc/init.d/kallithea':
+        ensure  => file,
+        mode    => '0755',
+        content => template('kallithea/init.d/kallithea.debian.erb'),
+      }
+    }
   }
 
   ############################################################
@@ -54,7 +58,7 @@ class kallithea::install (
   if $manage_python {
     class { 'python':
       dev        => true,
-      pip        => false,
+      pip        => $::kallithea::params::install_pip,
       virtualenv => true,
       before     => Python::Virtualenv[$venv],
     }
@@ -66,7 +70,6 @@ class kallithea::install (
     group      => $app_user,
     require    => [
       User[$app_user],
-      Package[$packages],
     ],
   }
 
@@ -77,7 +80,13 @@ class kallithea::install (
   kallithea::package { 'PasteScript': } ->
   kallithea::package { 'kallithea': }
 
+  package { $::kallithea::params::packages:
+    ensure => present,
+    before => Python::Virtualenv[$venv],
+  }
+
   if $ldap_support {
+    ensure_packages($::kallithea::params::ldap_packages)
     kallithea::package { 'python-ldap': }
   }
 
