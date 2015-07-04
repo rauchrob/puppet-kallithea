@@ -2,11 +2,16 @@
   "name": "rauch-kallithea",
   "version": "0.2.5",
   "author": "Robert Rauch (GNS Systems)",
-  "summary": "Setup Kallithea (kallithea-scm.org)",
+  "summary": "Manage Kallithea (https://kallithea-scm.org)",
   "license": "Apache-2.0",
   "source": "https://github.com/rauchrob/puppet-kallithea",
   "project_page": "https://github.com/rauchrob/puppet-kallithea",
   "issues_url": "https://github.com/rauchrob/puppet-kallithea/issues",
+  "tags": [
+    "git",
+    "mercurial",
+    "vcs"
+  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -27,7 +32,6 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "6",
         "7"
       ]
     },
