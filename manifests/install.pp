@@ -2,30 +2,36 @@
 #
 # This class is called from kallithea for install.
 #
-class kallithea::install {
+class kallithea::install (
+  $app_root      = $::kallithea::app_root,
+  $app_user      = $::kallithea::app_user,
+  $ldap_support  = $::kallithea::ldap_support,
+  $manage_python = $::kallithea::manage_python,
+  $repo_root     = $::kallithea::repo_root,
+) {
 
-  $packages = $::kallithea::ldap_support ? {
+  $packages = $ldap_support ? {
     true  => ['gcc', 'openldap-devel'],
     false => ['gcc'],
   }
 
   ensure_packages($packages)
 
-  user { $::kallithea::app_user:
+  user { $app_user:
     ensure => present,
-    home   => $::kallithea::app_root,
+    home   => $app_root,
     system => true,
   }
 
-  file { [ $::kallithea::app_root, $::kallithea::repo_root, ]:
+  file { [ $app_root, $repo_root, ]:
     ensure => directory,
-    owner  => $::kallithea::app_user,
-    group  => $::kallithea::app_user,
+    owner  => $app_user,
+    group  => $app_user,
   }
 
   file { '/var/log/kallithea':
     ensure => directory,
-    owner  => $::kallithea::app_user,
+    owner  => $app_user,
   }
 
   file { '/usr/lib/systemd/system/kallithea.service':
@@ -40,21 +46,26 @@ class kallithea::install {
     notify => Service['kallithea'],
   }
 
-  if $::kallithea::manage_python {
+  ############################################################
+  # Python Setup
+
+  $venv = "${app_root}/venv"
+
+  if $manage_python {
     class { 'python':
       dev        => true,
       pip        => false,
       virtualenv => true,
-      before     => Python::Virtualenv["${::kallithea::app_root}/venv"],
+      before     => Python::Virtualenv[$venv],
     }
   }
 
-  python::virtualenv { "${::kallithea::app_root}/venv":
+  python::virtualenv { $venv:
     systempkgs => false,
-    owner      => $::kallithea::app_user,
-    group      => $::kallithea::app_user,
+    owner      => $app_user,
+    group      => $app_user,
     require    => [
-      User[$::kallithea::app_user],
+      User[$app_user],
       Package[$packages],
     ],
   }
@@ -66,7 +77,7 @@ class kallithea::install {
   kallithea::package { 'PasteScript': } ->
   kallithea::package { 'kallithea': }
 
-  if $::kallithea::ldap_support {
+  if $ldap_support {
     kallithea::package { 'python-ldap': }
   }
 
