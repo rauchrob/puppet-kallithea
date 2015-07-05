@@ -4,9 +4,7 @@ describe 'kallithea' do
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
       context "on #{os}" do
-        let(:facts) do
-          facts
-        end
+        let(:facts) { facts }
 
         context "kallithea class without any parameters" do
           it { is_expected.to compile.with_all_deps }
@@ -17,7 +15,7 @@ describe 'kallithea' do
   end
 
   context 'in all cases' do
-    let(:facts) {{ :osfamily => 'Debian' }}
+    let(:facts) { on_supported_os['centos-7-x86_64'] }
 
     it { is_expected.to contain_class('kallithea::params') }
     it { is_expected.to contain_class('kallithea::install').that_comes_before('kallithea::config') }
