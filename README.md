@@ -18,7 +18,7 @@
 
 ## Overview
 
-This module lets you setup a [Kallithea](https://kallithea-scm.org) instance. It has been developed for and successfully tested on CentOS/RHEL 7, but more platforms should follow in the future.
+This module lets you setup a [Kallithea](https://kallithea-scm.org) instance. 
 
 ## Module Description
 
@@ -73,7 +73,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 
 ### Defines
 
-* [`kallithea::package`](#class-kallitheapackage)
+* [`kallithea::package`](#define-kallitheapackage)
 
 #### Class `kallithea`
 
@@ -84,7 +84,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `admin_user`: Name of the initial admin user, created during database initialization. Defaults to `admin`.
 * `app_root`: The directory under which Kallithea will be installed (i.e. the home  directory of `$app_user`). Defaults to `/srv/kallithea`.
 * `app_user`: The user under which Kallithea will be installed. Defaults to `kallithea`.
-* `config`: If not `undef`, this will the content of Kallitheas main configuration file "${app_root}/kallithea.ini". Otherwise, it will be initialized with Kallitheas defaults during installation. Defaults to `undef`
+* `config`: If not `undef`, this will the content of Kallitheas main configuration file `${app_root}/kallithea.ini`. Otherwise, it will be initialized with Kallitheas defaults during installation. Defaults to `undef`
 * `ldap_support`: If set to true, the python-ldap package and its dependencies will be installed into Kallitheas python environment. Defaults to `true`.
 * `manage_python`: Whether to install Python using the [`stankevich/python`](https://github.com/stankevich/puppet-python) module. Defaults to `true`.
 * `proxy`: If not `undef`, this will be the HTTP proxy settings which are used when installing Kallithea via pip. Defaults to `undef`.
@@ -109,7 +109,7 @@ This class lets you initialize the database backing Kallithea. You have to do th
 
 #### Define `kallithea::package`
 
-This define lets install addons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
+This define lets install add ons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
 
 ##### Parameters 
 
@@ -117,7 +117,13 @@ This define lets install addons for Kallithea by installing additional Python pa
 
 ## Limitations
 
-This module has been developed for and successfully tested only on CentOS/RHEL 7, using Kallithea v0.2.1. Consequently, currently only a Systemd service definition is provided. In principle, however, it should be easy to modify the module for use with other platforms as well.
+This module has been developed been successfully tested using Kallithea v0.2.1 on the following operating systems:
+
+* CentOS/RHEL 7
+* Debian 7
+* Ubuntu 12.04 and 14.04
+
+Support for CentOS/RHEL 6 and Debian 6 is planned for future releases.
 
 ## Development
 
