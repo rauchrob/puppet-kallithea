@@ -46,7 +46,7 @@ class kallithea::install (
       file { '/etc/init.d/kallithea':
         ensure  => file,
         mode    => '0755',
-        content => template('kallithea/init.d/kallithea.debian.erb'),
+        content => template($params::service_template),
       }
     }
   }

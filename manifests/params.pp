@@ -22,9 +22,14 @@ class kallithea::params {
       $packages = ['gcc']
       $ldap_packages = ['openldap-devel']
       $install_pip = false
-      $service_provider = $operatingsystemmajrelease ? {
-        '7'     => 'systemd',
-        default => 'init',
+      case $operatingsystemmajrelease {
+        '7': {
+          $service_provider = 'systemd'
+        }
+        default: {
+          $service_provider = 'init'
+          $service_template = 'kallithea/init.d/kallithea.redhat.erb'
+        }
       }
     }
     'Debian': {
@@ -32,6 +37,7 @@ class kallithea::params {
       $install_pip = true
       $ldap_packages = ['libldap2-dev', 'libsasl2-dev']
       $service_provider = 'init'
+      $service_template = 'kallithea/init.d/kallithea.debian.erb'
     }
 
     default: {
