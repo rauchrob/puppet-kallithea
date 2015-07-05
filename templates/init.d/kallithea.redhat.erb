@@ -1,8 +1,4 @@
 #!/bin/sh
-########################################
-#### THIS IS A REDHAT INIT.D SCRIPT ####
-########################################
-
 ##################################################
 #
 # Kallithea server startup script
@@ -36,8 +32,6 @@ RUN_AS="<%= @app_user %>"
 DAEMON="$PYTHON_PATH/bin/paster"
 
 DAEMON_OPTS="serve --daemon \
-    --user=$RUN_AS \
-    --group=$RUN_AS \
     --pid-file=$PID_PATH \
     --log-file=$LOG_PATH $APP_PATH/$CONF_NAME"
 
@@ -86,10 +80,9 @@ stop_kallithea () {
 
 status_kallithea() {
   if [ -e $LOCK_FILE ]; then
-    # exit with non-zero to indicate failure
-    RETVAL=1
-  else
     RETVAL=0
+  else
+    RETVAL=3
   fi
   return $RETVAL
 }
