@@ -8,31 +8,20 @@ describe 'kallithea' do
           facts
         end
 
-        app_root = '/srv/kallithea'
-
         context "kallithea class without any parameters" do
-          let(:params) {{ }}
-
           it { is_expected.to compile.with_all_deps }
-
-          it { is_expected.to contain_class('kallithea::params') }
-          it { is_expected.to contain_class('kallithea::install').that_comes_before('kallithea::config') }
-          it { is_expected.to contain_class('kallithea::config') }
-
-          it { is_expected.to contain_file("#{app_root}/kallithea.ini").with_content(nil) }
-          it { should contain_python__pip("python-ldap@#{app_root}/venv") }
-          it { is_expected.to contain_class('python').that_comes_before("Python::Virtualenv[#{app_root}/venv]") }
-        end
-
-        context "kallithea class with config parameter" do
-          let(:params) {{ :config => 'foo' }}
-
-          it { is_expected.to compile.with_all_deps }
-          it { is_expected.to contain_file("#{app_root}/kallithea.ini").with_content('foo') }
         end
 
       end
     end
+  end
+
+  context 'in all cases' do
+    let(:facts) {{ :osfamily => 'Debian' }}
+
+    it { is_expected.to contain_class('kallithea::params') }
+    it { is_expected.to contain_class('kallithea::install').that_comes_before('kallithea::config') }
+    it { is_expected.to contain_class('kallithea::config') }
   end
 
   context 'unsupported operating system' do
