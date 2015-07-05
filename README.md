@@ -73,7 +73,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 
 ### Defines
 
-* [`kallithea::package`](#class-kallitheapackage)
+* [`kallithea::package`](#define-kallitheapackage)
 
 #### Class `kallithea`
 
@@ -84,7 +84,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `admin_user`: Name of the initial admin user, created during database initialization. Defaults to `admin`.
 * `app_root`: The directory under which Kallithea will be installed (i.e. the home  directory of `$app_user`). Defaults to `/srv/kallithea`.
 * `app_user`: The user under which Kallithea will be installed. Defaults to `kallithea`.
-* `config`: If not `undef`, this will the content of Kallitheas main configuration file "${app_root}/kallithea.ini". Otherwise, it will be initialized with Kallitheas defaults during installation. Defaults to `undef`
+* `config`: If not `undef`, this will the content of Kallitheas main configuration file `${app_root}/kallithea.ini`. Otherwise, it will be initialized with Kallitheas defaults during installation. Defaults to `undef`
 * `ldap_support`: If set to true, the python-ldap package and its dependencies will be installed into Kallitheas python environment. Defaults to `true`.
 * `manage_python`: Whether to install Python using the [`stankevich/python`](https://github.com/stankevich/puppet-python) module. Defaults to `true`.
 * `proxy`: If not `undef`, this will be the HTTP proxy settings which are used when installing Kallithea via pip. Defaults to `undef`.
