@@ -18,7 +18,7 @@
 
 ## Overview
 
-This module lets you setup a [Kallithea](https://kallithea-scm.org) instance. It has been developed for and successfully tested on CentOS/RHEL 7, but more platforms should follow in the future.
+This module lets you setup a [Kallithea](https://kallithea-scm.org) instance. 
 
 ## Module Description
 
@@ -109,7 +109,7 @@ This class lets you initialize the database backing Kallithea. You have to do th
 
 #### Define `kallithea::package`
 
-This define lets install addons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
+This define lets install add ons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
 
 ##### Parameters 
 
@@ -117,7 +117,13 @@ This define lets install addons for Kallithea by installing additional Python pa
 
 ## Limitations
 
-This module has been developed for and successfully tested only on CentOS/RHEL 7, using Kallithea v0.2.1. Consequently, currently only a Systemd service definition is provided. In principle, however, it should be easy to modify the module for use with other platforms as well.
+This module has been developed been successfully tested using Kallithea v0.2.1 on the following operating systems:
+
+* CentOS/RHEL 7
+* Debian 7
+* Ubuntu 12.04 and 14.04
+
+Support for CentOS/RHEL 6 and Debian 6 is planned for future releases.
 
 ## Development
 
