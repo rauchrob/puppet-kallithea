@@ -3,11 +3,12 @@
 # This class is called from kallithea for install.
 #
 class kallithea::install (
-  $app_root      = $::kallithea::app_root,
-  $app_user      = $::kallithea::app_user,
-  $ldap_support  = $::kallithea::ldap_support,
-  $manage_python = $::kallithea::manage_python,
-  $repo_root     = $::kallithea::repo_root,
+  $app_root         = $::kallithea::app_root,
+  $app_user         = $::kallithea::app_user,
+  $ldap_support     = $::kallithea::ldap_support,
+  $manage_python    = $::kallithea::manage_python,
+  $repo_root        = $::kallithea::repo_root,
+  $service_provider = $::kallithea::params::service_provider,
 ) {
 
   user { $app_user:
@@ -27,7 +28,7 @@ class kallithea::install (
     owner  => $app_user,
   }
 
-  case $params::service_provider {
+  case $service_provider {
     'systemd': {
       file { '/usr/lib/systemd/system/kallithea.service':
         ensure  => file,

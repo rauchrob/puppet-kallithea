@@ -31,19 +31,6 @@ describe 'kallithea' do
           it { is_expected.to contain_file("#{app_root}/kallithea.ini").with_content('foo') }
         end
 
-        context "kallithea class without ldap_support" do
-          let(:params) {{ :ldap_support => false }}
-
-          it { is_expected.to compile.with_all_deps }
-          it { should_not contain_package('openldap-devel') }
-        end
-
-        context "kallithea class with manage_python = false " do
-          let(:params) {{ :manage_python => false }}
-
-          it { is_expected.to compile.with_all_deps }
-          it { should_not contain_class('python') }
-        end
       end
     end
   end
