@@ -9,7 +9,7 @@ class kallithea::install (
   $manage_python    = $::kallithea::manage_python,
   $repo_root        = $::kallithea::repo_root,
   $service_provider = $::kallithea::params::service_provider,
-) inherits params {
+) inherits ::kallithea::params {
 
   user { $app_user:
     ensure => present,
