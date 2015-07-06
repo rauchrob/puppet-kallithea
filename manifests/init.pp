@@ -73,7 +73,20 @@ class kallithea (
   ##################################################
   # Data Validation
 
+  validate_string(
+    $app_user,
+    $admin_user,
+    $admin_pass,
+    $admin_mail,
+  )
   validate_absolute_path([$app_root, $repo_root])
+  validate_bool(
+    $ldap_support,
+    $manage_python,
+    $seed_db,
+    $service_enable,
+    $service_ensure,
+  )
 
   if $config {
     validate_string($config)
