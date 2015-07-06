@@ -56,18 +56,18 @@
 #
 
 class kallithea (
-  String $admin_mail = $kallithea::params::admin_mail,
-  String $admin_pass = $kallithea::params::admin_pass,
-  String $admin_user = $kallithea::params::admin_user,
-  String $app_root = $kallithea::params::app_root,
-  String $app_user = $kallithea::params::app_user,
-  String $config = $kallithea::params::config,
-  Boolean $ldap_support = $kallithea::params::ldap_support,
-  Boolean $manage_python = $kallithea::params::manage_python,
-  String $repo_root = $kallithea::params::repo_root,
-  Boolean $seed_db = $kallithea::params::seed_db,
-  Boolean $service_enable = $kallithea::params::service_enable,
-  Boolean $service_ensure = $kallithea::params::service_ensure,
+  $admin_mail = $kallithea::params::admin_mail,
+  $admin_pass = $kallithea::params::admin_pass,
+  $admin_user = $kallithea::params::admin_user,
+  $app_root = $kallithea::params::app_root,
+  $app_user = $kallithea::params::app_user,
+  $config = $kallithea::params::config,
+  $ldap_support = $kallithea::params::ldap_support,
+  $manage_python = $kallithea::params::manage_python,
+  $repo_root = $kallithea::params::repo_root,
+  $seed_db = $kallithea::params::seed_db,
+  $service_enable = $kallithea::params::service_enable,
+  $service_ensure = $kallithea::params::service_ensure,
 ) inherits kallithea::params {
 
   ##################################################
