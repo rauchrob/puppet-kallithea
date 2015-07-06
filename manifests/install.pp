@@ -9,7 +9,7 @@ class kallithea::install (
   $manage_python    = $::kallithea::manage_python,
   $repo_root        = $::kallithea::repo_root,
   $service_provider = $::kallithea::params::service_provider,
-) inherits ::kallithea::params {
+) inherits kallithea::params {
 
   user { $app_user:
     ensure => present,
@@ -46,7 +46,7 @@ class kallithea::install (
       file { '/etc/init.d/kallithea':
         ensure  => file,
         mode    => '0755',
-        content => template($params::service_template),
+        content => template($kallithea::params::service_template),
       }
     }
   }

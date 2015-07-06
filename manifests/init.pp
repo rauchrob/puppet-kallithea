@@ -56,19 +56,19 @@
 #
 
 class kallithea (
-  $admin_mail = $params::admin_mail,
-  $admin_pass = $params::admin_pass,
-  $admin_user = $params::admin_user,
-  $app_root = $params::app_root,
-  $app_user = $params::app_user,
-  $config = $params::config,
-  $ldap_support = $params::ldap_support,
-  $manage_python = $params::manage_python,
-  $repo_root = $params::repo_root,
-  $seed_db = $params::seed_db,
-  $service_enable = $params::service_enable,
-  $service_ensure = $params::service_ensure,
-) inherits ::kallithea::params {
+  $admin_mail = $kallithea::params::admin_mail,
+  $admin_pass = $kallithea::params::admin_pass,
+  $admin_user = $kallithea::params::admin_user,
+  $app_root = $kallithea::params::app_root,
+  $app_user = $kallithea::params::app_user,
+  $config = $kallithea::params::config,
+  $ldap_support = $kallithea::params::ldap_support,
+  $manage_python = $kallithea::params::manage_python,
+  $repo_root = $kallithea::params::repo_root,
+  $seed_db = $kallithea::params::seed_db,
+  $service_enable = $kallithea::params::service_enable,
+  $service_ensure = $kallithea::params::service_ensure,
+) inherits kallithea::params {
 
   ##################################################
   # Data Validation
