@@ -49,6 +49,7 @@ class kallithea::install (
         content => template($kallithea::params::service_template),
       }
     }
+    default: { fail("service_provider ${service_provider} not supported") }
   }
 
   ############################################################

@@ -8,7 +8,7 @@ class kallithea::service (
   $service_enable = $::kallithea::service_enable,
 ) {
   service { 'kallithea':
-    ensure   => $service_ensure,
-    enable   => $service_enable,
+    ensure => $service_ensure,
+    enable => $service_enable,
   }
 }

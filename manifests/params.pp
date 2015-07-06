@@ -22,7 +22,7 @@ class kallithea::params {
       $packages = ['gcc']
       $ldap_packages = ['openldap-devel']
       $install_pip = false
-      case $operatingsystemmajrelease {
+      case $::operatingsystemmajrelease {
         '7': {
           $service_provider = 'systemd'
         }
