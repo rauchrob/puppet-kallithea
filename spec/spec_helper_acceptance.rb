@@ -1,8 +1,11 @@
 require 'beaker-rspec/spec_helper'
 require 'beaker-rspec/helpers/serverspec'
 
+# Initial provisioning
 unless ENV['BEAKER_provision'] == 'no'
   install_puppet_on(hosts, { version: ENV['PUPPET_VERSION'] } )
+
+  on hosts, puppet('module', 'install', 'stankevich/python'), { :acceptable_exit_codes => [0,1] }
 end
 
 RSpec.configure do |c|
@@ -16,10 +19,5 @@ RSpec.configure do |c|
   c.before :suite do
     # Install module and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'kallithea')
-
-    hosts.each do |host|
-      on host, puppet('module', 'install', 'puppetlabs/stdlib'), { :acceptable_exit_codes => [0,1] }
-      on host, puppet('module', 'install', 'stankevich/python'), { :acceptable_exit_codes => [0,1] }
-    end
   end
 end
