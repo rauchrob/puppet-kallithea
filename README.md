@@ -119,7 +119,7 @@ This define lets install add ons for Kallithea by installing additional Python p
 
 This module has been developed been successfully tested using Kallithea v0.2.1 on the following operating systems:
 
-* CentOS/RHEL 7
+* CentOS/RHEL 6 and 7
 * Debian 7
 * Ubuntu 12.04 and 14.04
 
