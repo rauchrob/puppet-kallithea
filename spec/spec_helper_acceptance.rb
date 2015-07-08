@@ -18,5 +18,6 @@ RSpec.configure do |c|
     # Install module and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'kallithea')
     on hosts, puppet('module', 'install', 'stankevich/python'), { :acceptable_exit_codes => [0,1] }
+    on hosts, puppet('module', 'install', 'puppetlabs/git'), { :acceptable_exit_codes => [0,1] }
   end
 end
