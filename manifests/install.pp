@@ -6,10 +6,15 @@ class kallithea::install (
   $app_root         = $::kallithea::app_root,
   $app_user         = $::kallithea::app_user,
   $ldap_support     = $::kallithea::ldap_support,
+  $manage_git       = $::kallithea::manage_git,
   $manage_python    = $::kallithea::manage_python,
   $repo_root        = $::kallithea::repo_root,
   $service_provider = $::kallithea::params::service_provider,
 ) inherits kallithea::params {
+
+  if $manage_git {
+    require git
+  }
 
   user { $app_user:
     ensure => present,

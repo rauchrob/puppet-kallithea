@@ -54,6 +54,9 @@
 #   Whether to manage installation of Python and required tools (virtualenv and
 #   pip). Needs the stankevich/python module
 #
+# [*manage_git*]
+#   Whether to manage installation of git by using the puppetlabs/git module.
+#
 
 class kallithea (
   $admin_mail = $kallithea::params::admin_mail,
@@ -63,6 +66,7 @@ class kallithea (
   $app_user = $kallithea::params::app_user,
   $config = $kallithea::params::config,
   $ldap_support = $kallithea::params::ldap_support,
+  $manage_git = $kallithea::params::manage_git,
   $manage_python = $kallithea::params::manage_python,
   $repo_root = $kallithea::params::repo_root,
   $seed_db = $kallithea::params::seed_db,
