@@ -30,12 +30,13 @@ Kallithea is *"a free software source code management system supporting two lead
 
 * Required Packages for installing the kallithea python package (platform dependent) 
 * The user under which Kallithea will run
-* The Kallithea Users home, containing a Python virtualenv in which Kallithea gets installed
-* The Kallithea Service
+* The Kallithea users home, containing a Python virtualenv in which Kallithea gets installed
+* The Kallithea service
+* Installation of git (optionally) 
 
 ### Setup Requirements
 
-The installation of Kallithea requires `virtualenv` and `pip` to be installed.
+For full functionality, Kallithea requires git to be installed. This module can optionally git as well, but this requires the `puppetlabs/git` module.
 
 ### Beginning with kallithea
 
@@ -86,6 +87,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `app_user`: The user under which Kallithea will be installed. Defaults to `kallithea`.
 * `config`: If not `undef`, this will the content of Kallitheas main configuration file `${app_root}/kallithea.ini`. Otherwise, it will be initialized with Kallitheas defaults during installation. Defaults to `undef`
 * `ldap_support`: If set to true, the python-ldap package and its dependencies will be installed into Kallitheas python environment. Defaults to `true`.
+* `manage_python`: Whether to install git using the [`puppetlabs/git`](https://github.com/puppetlabs/puppetlabs-git) module. Defaults to `false`.
 * `manage_python`: Whether to install Python using the [`stankevich/python`](https://github.com/stankevich/puppet-python) module. Defaults to `true`.
 * `proxy`: If not `undef`, this will be the HTTP proxy settings which are used when installing Kallithea via pip. Defaults to `undef`.
 * `repo_root`: The directory under which Kallithea will put the repositories. Defaults to `${app_root}/repos`.
@@ -109,7 +111,7 @@ This class lets you initialize the database backing Kallithea. You have to do th
 
 #### Define `kallithea::package`
 
-This define lets install add ons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
+This define lets you install add ons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
 
 ##### Parameters 
 
