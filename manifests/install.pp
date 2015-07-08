@@ -14,6 +14,8 @@ class kallithea::install (
 
   if $manage_git {
     require git
+  } else {
+    warning("the manage_git parameter will default to 'true' within rauch/kallithea v1.0.0")
   }
 
   user { $app_user:
