@@ -1,4 +1,5 @@
-Upcoming Release 0.2.8
+Upcoming Release 0.3.0
+- add $manage_git parameter
 - Support for Fedora 19 and 20
 - Improve acceptance tests
 
