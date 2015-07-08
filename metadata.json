@@ -2,21 +2,22 @@
   "name": "rauch-kallithea",
   "version": "0.2.8",
   "author": "Robert Rauch (GNS Systems)",
-  "summary": "Manage Kallithea (https://kallithea-scm.org)",
+  "summary": "Manage Kallithea, a free source code management system",
   "license": "Apache-2.0",
   "source": "https://github.com/rauchrob/puppet-kallithea",
   "project_page": "https://github.com/rauchrob/puppet-kallithea",
   "issues_url": "https://github.com/rauchrob/puppet-kallithea/issues",
+  "tags": [
+    "rhodecode",
+    "git",
+    "mercurial",
+    "vcs"
+  ],
   "requirements": [
     {
       "name": "puppet",
       "version_requirement": ">=2.7.0 <5.0.0"
     }
-  ],
-  "tags": [
-    "git",
-    "mercurial",
-    "vcs"
   ],
   "dependencies": [
     {
@@ -40,6 +41,12 @@
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "7"
+      ]
+    },
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [
+        "20"
       ]
     },
     {
