@@ -1,3 +1,7 @@
+Upcoming Release 0.2.8
+- Support for Fedora20
+- Improve acceptance tests
+
 2015-07-07 Release 0.2.7
 - Support for EL6
 - Support for puppet4
