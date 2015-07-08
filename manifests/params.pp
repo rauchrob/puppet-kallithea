@@ -29,6 +29,7 @@ class kallithea::params {
       $install_pip = true
       $ldap_packages = ['libldap2-dev', 'libsasl2-dev']
     }
+    default: {}
   }
 
   # Service parameters
