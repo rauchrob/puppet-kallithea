@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe 'kallithea::install' do
-  let(:facts) {{ :osfamily => 'Debian' }}
+  let(:facts) {{ 
+    :osfamily => 'Debian',
+    :operatingsystem => 'Ubuntu',
+  }}
 
   default_params = { 
     :manage_python => false,

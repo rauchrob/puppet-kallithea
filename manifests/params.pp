@@ -18,30 +18,41 @@ class kallithea::params {
   $service_ensure = true
 
   case $::osfamily {
-    /CentOS|RedHat/: {
+    'RedHat': {
       $packages = ['gcc']
       $ldap_packages = ['openldap-devel']
       $install_pip = false
-      case $::operatingsystemmajrelease {
-        '7': {
-          $service_provider = 'systemd'
-        }
-        default: {
-          $service_provider = 'init'
-          $service_template = 'kallithea/init.d/kallithea.redhat.erb'
-        }
-      }
     }
     'Debian': {
       $packages = []
       $install_pip = true
       $ldap_packages = ['libldap2-dev', 'libsasl2-dev']
+    }
+  }
+
+  # Service parameters
+  case $::operatingsystem {
+    /RedHat|CentOS/: {
+      case $::operatingsystemmajrelease {
+        '7': { $service_provider = 'systemd' }
+        '6': {
+          $service_provider = 'init'
+          $service_template = 'kallithea/init.d/kallithea.redhat.erb'
+        }
+        default: { fail("${::operatingsystem}${::operatingsystemmajrelease} not supported") }
+      }
+    }
+    /Fedora/: {
+      case $::operatingsystemmajrelease {
+        /19|20/: { $service_provider = 'systemd' }
+        default: { fail("${::operatingsystem}${::operatingsystemmajrelease} not supported") }
+      }
+    }
+    /Debian|Ubuntu/: {
       $service_provider = 'init'
       $service_template = 'kallithea/init.d/kallithea.debian.erb'
     }
 
-    default: {
-      fail("${::operatingsystem} not supported")
-    }
+    default: { fail("${::operatingsystem} not supported") }
   }
 }
