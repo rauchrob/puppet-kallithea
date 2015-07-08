@@ -20,7 +20,7 @@ describe 'kallithea::install' do
     it { should contain_kallithea__package('python-ldap') }
     it { should contain_file('/etc/init.d/kallithea') }
     it { should_not contain_class('python') }
-    it { should contain_class('git').that_comes_before('Class[kallithea::install]') }
+    it { should_not contain_class('git') }
   end
 
   context "with service_provider = 'systemd'" do
@@ -35,10 +35,10 @@ describe 'kallithea::install' do
     it { should_not contain_kallithea__package('python-ldap') }
   end
 
-  context "with manage_git = false" do
-    let(:params) { default_params.merge({ :manage_git => false }) }
+  context "with manage_git = true" do
+    let(:params) { default_params.merge({ :manage_git => true }) }
 
-    it { should_not contain_class('git') }
+    it { should contain_class('git').that_comes_before('Class[kallithea::install]') }
   end
 
   context "with manage_python = true" do

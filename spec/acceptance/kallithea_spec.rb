@@ -2,12 +2,13 @@ require 'spec_helper_acceptance'
 
 describe 'kallithea class' do
 
-  context 'default parameters and seed_db => true' do
+  context 'default parameters and manage_git, seed_db => true' do
     # Using puppet_apply as a helper
     it 'should work idempotently with no errors' do
       pp = <<-EOS
       class { 'kallithea':
         seed_db => true,
+        manage_git => true
       }
       EOS
 
@@ -16,9 +17,14 @@ describe 'kallithea class' do
       apply_manifest(pp, :catch_changes  => true)
     end
 
+    # the puppetlabs/git module <=0.4.0 does not officially support Fedora, so
+    # we do some rudimentary testing here:
+    describe command('git --version') do
+      its(:exit_status) { should eq 0 }
+    end
+
     describe service('kallithea') do
       it { is_expected.to be_running }
-      # the following will fail if using simple init script on systems using upstart
       it { is_expected.to be_enabled }
     end
 
