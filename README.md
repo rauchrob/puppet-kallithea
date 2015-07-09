@@ -126,7 +126,7 @@ This module has been developed been successfully tested using Kallithea v0.2.1 o
 * Fedora 19 and 20
 * Ubuntu 12.04 and 14.04
 
-Support for CentOS/RHEL 6 and Debian 6 is planned for future releases.
+Support for Debian 6 and 8 is planned for future releases.
 
 ## Development
 
