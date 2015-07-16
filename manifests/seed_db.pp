@@ -23,9 +23,12 @@
 #
 
 class kallithea::seed_db (
-  $user = $::kallithea::params::admin_user,
-  $pass = $::kallithea::params::admin_pass,
-  $mail = $::kallithea::params::admin_mail,
+  $user      = $::kallithea::params::admin_user,
+  $pass      = $::kallithea::params::admin_pass,
+  $mail      = $::kallithea::params::admin_mail,
+  $app_root  = $::kallithea::app_root,
+  $app_user  = $::kallithea::app_user,
+  $repo_root = $::kallithea::repo_root,
 ) inherits ::kallithea::params {
   
   validate_string(
@@ -34,8 +37,6 @@ class kallithea::seed_db (
     $mail,
   )
 
-  $app_root = $::kallithea::app_root
-  $repo_root = $::kallithea::repo_root
   $config_file = "${app_root}/kallithea.ini"
   $lock_file = "${app_root}/.db_initalized"
 
