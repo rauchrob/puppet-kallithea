@@ -37,16 +37,10 @@ class kallithea::install (
 
   case $service_provider {
     'systemd': {
-      file { '/usr/lib/systemd/system/kallithea.service':
+      file { '/etc/systemd/system/kallithea.service':
         ensure  => file,
         mode    => '0644',
         content => template('kallithea/systemd/kallithea.service.erb'),
-      }
-
-      file { '/etc/systemd/system/kallithea.service':
-        ensure => link,
-        target => '/usr/lib/systemd/system/kallithea.service',
-        notify => Service['kallithea'],
       }
     }
     'init': {

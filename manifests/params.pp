@@ -50,7 +50,17 @@ class kallithea::params {
         default: { fail("${::operatingsystem}${::operatingsystemmajrelease} not supported") }
       }
     }
-    /Debian|Ubuntu/: {
+    /Debian/: {
+      case $::operatingsystemmajrelease {
+        '7': {
+          $service_provider = 'init'
+          $service_template = 'kallithea/init.d/kallithea.debian.erb'
+        }
+        '8': { $service_provider = 'systemd' }
+        default: { fail("${::operatingsystem}${::operatingsystemmajrelease} not supported") }
+      }
+    }
+    /Ubuntu/: {
       $service_provider = 'init'
       $service_template = 'kallithea/init.d/kallithea.debian.erb'
     }
