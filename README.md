@@ -119,7 +119,7 @@ This define lets you install add ons for Kallithea by installing additional Pyth
 
 ## Limitations
 
-This module has been developed been successfully tested using Kallithea v0.2.1 on the following operating systems:
+This module has been developed been successfully tested using Kallithea v0.2.1 and v0.2.2 on the following operating systems:
 
 * CentOS/RHEL 6 and 7
 * Debian 7
