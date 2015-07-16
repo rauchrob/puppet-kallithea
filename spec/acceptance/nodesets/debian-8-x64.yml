@@ -1,0 +1,12 @@
+HOSTS:
+  debian-80-x64:
+    roles:
+      - master
+    platform: debian-8-amd64
+    box: chef/debian-8.0
+    box_url: https://vagrantcloud.com/chef/boxes/debian-8.0
+    hypervisor: vagrant
+
+CONFIG:
+  log_level: verbose
+  type: foss
