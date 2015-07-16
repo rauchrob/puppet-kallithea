@@ -1,6 +1,7 @@
 Upcoming Release 0.2.8
 - Support for Fedora 19 and 20
 - Improve acceptance tests
+- Fix #9
 
 2015-07-07 Release 0.2.7
 - Support for EL6
