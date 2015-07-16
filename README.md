@@ -99,9 +99,9 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 
 #### Class `kallithea::seed_db`
 
-This class lets you initialize the database backing Kallithea. You have to do this at least once in order to use Kallithea. It is safe to let `seed_db` stay on `true` after Kallithea has been installed initially, as long as you don't remove the lockfile under `${app_root}/.db_initialized`.
+This class lets you initialize the database backing Kallithea. You have to do this at least once in order to use your Kallithea instance. Applying this class is idempotent, i.e. subsequent puppet runs will not reinitialize the database, as long as you don't remove the lockfile under `${app_root}/.db_initialized`.
 
-**Attention:** Initializing Kallitheas database will overwrite purge any previous data!
+**Attention:** Initializing Kallitheas database will wipe any previous data - use with care!
 
 ##### Parameters
 
