@@ -52,6 +52,7 @@ class kallithea::seed_db (
     command     => $cmd,
     creates     => $lock_file,
     refreshonly => true,
+    user        => $app_user,
   }
 }
 
