@@ -23,6 +23,10 @@ describe 'kallithea class' do
       its(:exit_status) { should eq 0 }
     end
 
+    describe file('/srv/kallithea/kallithea.db') do
+      it { should be_owned_by 'kallithea' }
+    end
+
     describe service('kallithea') do
       it { is_expected.to be_running }
       it { is_expected.to be_enabled }
