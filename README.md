@@ -122,7 +122,7 @@ This define lets you install add ons for Kallithea by installing additional Pyth
 This module has been developed been successfully tested using Kallithea v0.2.1 and v0.2.2 on the following operating systems:
 
 * CentOS/RHEL 6 and 7
-* Debian 7
+* Debian 7 and 8
 * Fedora 19 and 20
 * Ubuntu 12.04 and 14.04
 
