@@ -34,10 +34,4 @@ describe 'kallithea::install' do
     it { should_not contain_kallithea__package('python-ldap') }
   end
 
-  context "with manage_python = true" do
-    let(:params) { default_params.merge({ :manage_python => true }) }
-
-    it { should contain_class('python').that_comes_before('Python::Virtualenv[/app/root/venv]') }
-  end
-
 end
