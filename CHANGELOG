@@ -1,9 +1,11 @@
 Upcoming Release 0.3.0
 - add $manage_git parameter
-- Support for Fedora 19 and 20
 - Support for Debian 8
-- Improve acceptance tests
-- Fix #9
+
+2015-07-22 Release 0.2.8
+- Support for Fedora 19 and 20
+- Improve spec and acceptance tests
+- Fix #9 and #12
 
 2015-07-07 Release 0.2.7
 - Support for EL6

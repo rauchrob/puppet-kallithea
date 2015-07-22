@@ -41,10 +41,4 @@ describe 'kallithea::install' do
     it { should contain_class('git').that_comes_before('Class[kallithea::install]') }
   end
 
-  context "with manage_python = true" do
-    let(:params) { default_params.merge({ :manage_python => true }) }
-
-    it { should contain_class('python').that_comes_before('Python::Virtualenv[/app/root/venv]') }
-  end
-
 end

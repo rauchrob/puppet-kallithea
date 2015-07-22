@@ -63,7 +63,6 @@ class kallithea::install (
       dev        => true,
       pip        => $::kallithea::params::install_pip,
       virtualenv => true,
-      before     => Python::Virtualenv[$venv],
     }
   }
 
@@ -71,6 +70,9 @@ class kallithea::install (
     systempkgs => false,
     owner      => $app_user,
     group      => $app_user,
+    # Workaround for https://github.com/stankevich/puppet-python/issues/215
+    # Can be removed when support for stankevich/python <= 1.9.5 is dropped
+    before     => Anchor['python::end'],
     require    => [
       User[$app_user],
     ],
