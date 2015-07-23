@@ -4,5 +4,6 @@ fixtures:
     git: "https://github.com/puppetlabs/puppetlabs-git.git"
     python: "https://github.com/stankevich/puppet-python.git"
     epel:   "https://github.com/stahnma/puppet-module-epel.git"
+    inifile: "https://github.com/puppetlabs/puppetlabs-inifile.git"
   symlinks:
     kallithea: "#{source_dir}"

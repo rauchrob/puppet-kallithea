@@ -15,9 +15,9 @@ describe 'kallithea class' do
     it 'should work idempotently with no errors' do
       pp = <<-EOS
       class { 'kallithea':
-        seed_db => true,
-        manage_git => true,
-        version => #{kallithea_version_string},
+        seed_db     => true,
+        manage_git  => true,
+        version     => #{kallithea_version_string},
       }
       EOS
 
@@ -77,6 +77,36 @@ describe 'kallithea class' do
       if kallithea_version
         its(:stdout) { should match /^Version: #{kallithea_version}$/ }
       end
+    end
+  end
+
+  context 'change configuration with config_hash parameter' do
+    # Using puppet_apply as a helper
+    it 'should work idempotently with no errors' do
+      pp = <<-EOS
+      class { 'kallithea':
+        config_hash => {
+          'server:main' => {
+            'port' => '12345',
+          },
+          'DEFAULT' => {
+            'smtp_port' => '25',
+          }
+        }
+          
+      }
+      EOS
+
+      # Run it twice and test for idempotency
+      apply_manifest(pp, :catch_failures => true)
+      apply_manifest(pp, :catch_changes  => true)
+    end
+
+    describe port(12345) do
+      it {
+        sleep(10)
+        should be_listening
+      }
     end
   end
 

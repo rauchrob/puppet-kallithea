@@ -10,6 +10,7 @@ class kallithea::params {
   $app_root = '/srv/kallithea'
   $app_user = 'kallithea'
   $config = undef
+  $config_hash = undef
   $ldap_support = true
   $manage_git = false
   $manage_python = true
