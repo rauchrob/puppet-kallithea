@@ -4,6 +4,14 @@ define kallithea::ini_setting (
   $setting,
   $value,
 ) {
+  validate_string([
+    $setting,
+    $value,
+  ])
+
+  if $section {
+    validate_string($section)
+  }
 
   ini_setting { "kallithea ini_setting ${title}":
     ensure  => $ensure,
@@ -11,6 +19,8 @@ define kallithea::ini_setting (
     section => $section,
     setting => $setting,
     value   => $value,
+    require => Exec['initialize kallithea config'],
+    notify  => Service['kallithea'],
   }
 
 }
