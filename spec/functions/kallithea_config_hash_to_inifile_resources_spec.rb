@@ -16,7 +16,8 @@ describe 'kallithea_config_hash_to_inifile_resources' do
 
   context 'complex hash' do
     input = { 
-      sec1: { key1: :val1, key2: :val2, }, sec2: { key3: :val3, },
+      'sec1' => { 'key1' => 'val1', 'key2' => 'val2' },
+      'sec2' => { 'key3' => 'val3' },
      } 
 
     it { should run.with_params(input).and_return({
