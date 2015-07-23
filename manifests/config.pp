@@ -22,12 +22,7 @@ class kallithea::config (
       command => "/bin/sh -c \". ${app_root}/venv/bin/activate && paster make-config Kallithea kallithea.ini\"",
       cwd     => $app_root,
       creates => $config_file,
-    } ->
-
-    file { $config_file:
-      owner => $app_user,
-      group => $app_user,
-      mode  => '0640',
+      user    => $app_user,
     }
   }
 
