@@ -57,6 +57,10 @@
 # [*manage_git*]
 #   Whether to manage installation of git by using the puppetlabs/git module.
 #
+# [*version*]
+#   The version of Kallithea to installed. If undef, the latest available version
+#   will be used.
+#
 
 class kallithea (
   $admin_mail = $kallithea::params::admin_mail,
@@ -72,6 +76,7 @@ class kallithea (
   $seed_db = $kallithea::params::seed_db,
   $service_enable = $kallithea::params::service_enable,
   $service_ensure = $kallithea::params::service_ensure,
+  $version = $kallithea::params::version,
 ) inherits kallithea::params {
 
   ##################################################
@@ -82,6 +87,7 @@ class kallithea (
     $admin_user,
     $admin_pass,
     $admin_mail,
+    $version,
   )
   validate_absolute_path([$app_root, $repo_root])
   validate_bool(

@@ -17,6 +17,7 @@ class kallithea::params {
   $seed_db = false
   $service_enable = true
   $service_ensure = true
+  $version = undef
 
   case $::osfamily {
     'RedHat': {
