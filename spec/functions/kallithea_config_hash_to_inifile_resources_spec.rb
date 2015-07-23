@@ -7,7 +7,7 @@ describe 'kallithea_config_hash_to_inifile_resources' do
   end
 
   context 'simple non-empty hash' do
-    input = { sec1: { key1: :val1 } }
+    input = { 'sec1' => { 'key1' => 'val1' } }
 
     it { should run.with_params(input).and_return({
       'sec1/key1' => { 'ensure' => 'present', 'section' => 'sec1', 'setting' => 'key1', 'value' => 'val1', }
