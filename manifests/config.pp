@@ -21,6 +21,7 @@ class kallithea::config (
       group   => $app_user,
       mode    => '0640',
       content => $config,
+      notify  => Service['kallithea'],
     }
   } else {
 
