@@ -75,6 +75,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 ### Defines
 
 * [`kallithea::package`](#define-kallitheapackage)
+* [`kallithea::ini_setting`](#define-inisetting)
 
 #### Class `kallithea`
 
@@ -131,6 +132,17 @@ This define lets you install add ons for Kallithea by installing additional Pyth
 ##### Parameters 
 
 * `title`: The name of the Python package.
+
+#### Define `kallithea::ini_setting`
+
+This define allows you to manipulate Kallitheas INI-file configuration. It is the backend of main classes `$config_hash` parameter, which is the recommended usage. However, at times it might be advantageous to use this defined type directly, as it provides potentially more features. For example, by setting `$ensure => absent`, it is possible to completely remove configuration entries, which is not possible with the `$config_hash` parameter.
+
+##### Parameters
+
+* `setting`: The name of the setting you want to manipulate. Required.
+* `value`: The value the specified setting should be set to. Required.
+* `section`: The name of the section, in which the setting should be placed. Defaults to `undef`.
+* `ensure`: Whether to set (`present`) or delete (`absent`) the specified setting. Defaults to `present`.
 
 ## Limitations
 
