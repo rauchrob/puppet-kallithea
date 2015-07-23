@@ -90,3 +90,8 @@ If you don't want to have to recreate the virtual machine every time you
 can use `BEAKER_destroy=no` and `BEAKER_provision=no`. On the first run you will
 at least need `BEAKER_provision` set to yes (the default). The Vagrantfile
 for the created virtual machines will be in `.vagrant/beaker_vagrant_files`.
+
+You can do the acceptance tests against a specific Kallithea version by
+specifying the `KALLITHEA_VERSION` environment variable. If unset, the latest
+available version will be used.
+
