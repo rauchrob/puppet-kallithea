@@ -11,9 +11,9 @@ module Puppet::Parser::Functions
       config_hash[section].each_key do |setting|
         result["#{section}/#{setting}"] = {
           'ensure'  => 'present',
-          'section' => section,
-          'setting' => setting,
-          'value'   => config_hash[section][setting],
+          'section' => section.to_s,
+          'setting' => setting.to_s,
+          'value'   => config_hash[section][setting].to_s,
         }
       end
     end
