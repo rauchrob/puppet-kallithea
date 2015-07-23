@@ -2,13 +2,16 @@ require 'spec_helper_acceptance'
 
 describe 'kallithea class' do
 
+  kallithea_version = ENV['KALLITHEA_VERSION'] || 'undef'
+
   context 'default parameters and manage_git, seed_db => true' do
     # Using puppet_apply as a helper
     it 'should work idempotently with no errors' do
       pp = <<-EOS
       class { 'kallithea':
         seed_db => true,
-        manage_git => true
+        manage_git => true,
+        version => '#{kallithea_version}',
       }
       EOS
 
@@ -63,5 +66,12 @@ describe 'kallithea class' do
       }
     end
 
+    describe command('/srv/kallithea/venv/bin/pip show kallithea') do
+      its(:exit_status) { should eq 0 }
+      if kallithea_version != 'undef'
+        its(:stdout) { should match /^Version: #{kallithea_version}$/ }
+      end
+    end
   end
+
 end

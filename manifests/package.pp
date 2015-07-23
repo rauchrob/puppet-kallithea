@@ -4,7 +4,7 @@
 # Kallitheas virtualenv.
 #
 define kallithea::package (
-  $venv = $::kalllithea::install::venv,
+  $venv = $::kallithea::install::venv,
   $version = undef,
 ) {
 
