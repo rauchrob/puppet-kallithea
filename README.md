@@ -86,6 +86,20 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `app_root`: The directory under which Kallithea will be installed (i.e. the home  directory of `$app_user`). Defaults to `/srv/kallithea`.
 * `app_user`: The user under which Kallithea will be installed. Defaults to `kallithea`.
 * `config`: If not `undef`, this will the content of Kallitheas main configuration file `${app_root}/kallithea.ini`. Otherwise, it will be initialized with Kallitheas defaults during installation. Defaults to `undef`
+* `config_hash`: A hash of strings, used to add or update Kallitheas default INI-style configuration file. Keys correspond to sections the values, which must be string valued hashes of strings, correspond to key/value pairs within that section. For example,
+
+    ```
+    $config_hash => {
+      'DEFAULT'  => {
+        'key1'   => 'value1',
+        'key2'   => 'value2',
+      }
+    }
+    ```
+  
+  will create two settings `key1 = value1` and `key = value2` withing the `DEFAULT` section of Kallitheas configuration file.
+
+  This parameter Will be ignored, if the `$config` parameter has been given.
 * `ldap_support`: If set to true, the python-ldap package and its dependencies will be installed into Kallitheas python environment. Defaults to `true`.
 * `manage_git`: Whether to install git using the [`puppetlabs/git`](https://github.com/puppetlabs/puppetlabs-git) module. Defaults to `false`.
 * `manage_python`: Whether to install Python using the [`stankevich/python`](https://github.com/stankevich/puppet-python) module. Defaults to `true`.
@@ -127,7 +141,7 @@ This module has been developed been successfully tested using Kallithea v0.2.1 a
 * Fedora 19 and 20
 * Ubuntu 12.04 and 14.04
 
-Support for Debian 6 and 8 is planned for future releases.
+Support for Debian 6 is planned for future releases.
 
 ## Development
 
