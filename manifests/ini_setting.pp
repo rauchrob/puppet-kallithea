@@ -1,8 +1,8 @@
 define kallithea::ini_setting (
-  $ensure = present,
-  $section = undef,
   $setting,
   $value,
+  $ensure = present,
+  $section = undef,
 ) {
   validate_string(
     $setting,
