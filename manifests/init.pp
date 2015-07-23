@@ -26,6 +26,24 @@
 #   file "${app_root}/kallithea.ini". Otherwise, it will be initialized with
 #   kallitheas defaults during installation.
 #
+# [*config_hash*]
+#   A hash of strings, used to add or update Kallitheas default INI-style
+#   configuration file. Keys correspond to sections the values, which must be
+#   string valued hashes of strings, correspond to key/value pairs within that
+#   section. For example,
+#
+#     $config_hash => {
+#       'DEFAULT'  => {
+#         'key1'   => 'value1',
+#         'key2'   => 'value2',
+#       }
+#     }
+#   
+#   will create two settings 'key1 = value1' and 'key = value2' withing the
+#   DEFAULT section of Kallitheas configuration file.
+#
+#   This parameter Will be ignored, if the $config parameter has been given.
+#
 # [*ldap_support*]
 #   If set to true, the python-ldap package and its dependencies will be
 #   installed into kallitheas python environment.
@@ -69,6 +87,7 @@ class kallithea (
   $app_root = $kallithea::params::app_root,
   $app_user = $kallithea::params::app_user,
   $config = $kallithea::params::config,
+  $config_hash = $kallithea::params::config_hash,
   $ldap_support = $kallithea::params::ldap_support,
   $manage_git = $kallithea::params::manage_git,
   $manage_python = $kallithea::params::manage_python,
