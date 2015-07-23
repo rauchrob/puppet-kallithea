@@ -10,6 +10,7 @@ class kallithea::install (
   $manage_python    = $::kallithea::manage_python,
   $repo_root        = $::kallithea::repo_root,
   $service_provider = $::kallithea::params::service_provider,
+  $version          = $::kallithea::version,
 ) inherits kallithea::params {
 
   if $manage_git {
@@ -83,7 +84,10 @@ class kallithea::install (
   # internal package index, pip still tries to contact PyPi for installing
   # `PasteScript`. As a workaround we do the following:
   kallithea::package { 'PasteScript': } ->
-  kallithea::package { 'kallithea': }
+
+  kallithea::package { 'kallithea':
+    version => $version,
+  }
 
   package { $::kallithea::params::packages:
     ensure => present,

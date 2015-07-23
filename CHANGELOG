@@ -1,5 +1,6 @@
 Upcoming Release 0.3.0
 - add $manage_git parameter
+- add $version parameter
 - Support for Debian 8
 
 2015-07-22 Release 0.2.8

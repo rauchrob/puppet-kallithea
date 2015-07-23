@@ -41,4 +41,10 @@ describe 'kallithea::install' do
     it { should contain_class('git').that_comes_before('Class[kallithea::install]') }
   end
 
+  context "with version = 'x.y.z'" do
+    let(:params) { default_params.merge({ :version => 'x.y.z' }) }
+
+    it { should contain_kallithea__package('kallithea').with_version('x.y.z') }
+  end
+
 end
