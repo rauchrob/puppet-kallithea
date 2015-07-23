@@ -89,7 +89,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `config`: If not `undef`, this will the content of Kallitheas main configuration file `${app_root}/kallithea.ini`. Otherwise, it will be initialized with Kallitheas defaults during installation. Defaults to `undef`
 * `config_hash`: A hash of strings, used to add or update Kallitheas default INI-style configuration file. Keys correspond to sections the values, which must be string valued hashes of strings, correspond to key/value pairs within that section. For example,
 
-    ```
+    ```puppet
     $config_hash => {
       'DEFAULT'  => {
         'key1'   => 'value1',
