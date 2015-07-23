@@ -110,4 +110,24 @@ describe 'kallithea class' do
     end
   end
 
+  context 'downgrading to kallithea v0.2.0' do
+    # Using puppet_apply as a helper
+    it 'should work idempotently with no errors' do
+      pp = <<-EOS
+      class { 'kallithea':
+        version => '0.2.0',
+      }
+      EOS
+
+      # Run it twice and test for idempotency
+      apply_manifest(pp, :catch_failures => true)
+      apply_manifest(pp, :catch_changes  => true)
+    end
+
+    describe command('/srv/kallithea/venv/bin/pip show kallithea') do
+      its(:stdout) { should match /^Version: 0.2$/ }
+    end
+
+  end
+
 end
