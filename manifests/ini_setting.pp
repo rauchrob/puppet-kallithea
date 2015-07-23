@@ -4,10 +4,10 @@ define kallithea::ini_setting (
   $setting,
   $value,
 ) {
-  validate_string([
+  validate_string(
     $setting,
     $value,
-  ])
+  )
 
   if $section {
     validate_string($section)
