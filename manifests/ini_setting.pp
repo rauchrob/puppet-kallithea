@@ -1,8 +1,8 @@
 define kallithea::ini_setting (
-  $setting,
-  $value,
   $ensure = present,
   $section = undef,
+  $setting,
+  $value,
 ) {
 
   ini_setting { "kallithea ini_setting ${title}":
