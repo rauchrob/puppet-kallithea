@@ -79,7 +79,6 @@
 #   The version of Kallithea to installed. If undef, the latest available version
 #   will be used.
 #
-
 class kallithea (
   $admin_mail = $kallithea::params::admin_mail,
   $admin_pass = $kallithea::params::admin_pass,
