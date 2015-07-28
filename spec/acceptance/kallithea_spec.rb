@@ -110,12 +110,12 @@ describe 'kallithea class' do
     end
   end
 
-  context 'downgrading to kallithea v0.2.0' do
+  context 'downgrading to kallithea v0.2.1' do
     # Using puppet_apply as a helper
     it 'should work idempotently with no errors' do
       pp = <<-EOS
       class { 'kallithea':
-        version => '0.2.0',
+        version => '0.2.1',
       }
       EOS
 
@@ -125,7 +125,7 @@ describe 'kallithea class' do
     end
 
     describe command('/srv/kallithea/venv/bin/pip show kallithea') do
-      its(:stdout) { should match /^Version: 0.2$/ }
+      its(:stdout) { should match /^Version: 0.2.1$/ }
     end
 
   end
