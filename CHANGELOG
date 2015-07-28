@@ -1,4 +1,4 @@
-Upcoming Release 0.3.0
+2015-07-28 Release 0.3.0
 - add $manage_git parameter
 - add $version parameter
 - add $config_hash parameter
