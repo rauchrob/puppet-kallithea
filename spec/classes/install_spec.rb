@@ -7,7 +7,7 @@ describe 'kallithea::install' do
   }}
 
   default_params = { 
-    :manage_python => false,
+    :manage_python => true,
     :app_root => '/app/root',
     :app_user => 'myuser',
     :ldap_support => true,
@@ -19,7 +19,7 @@ describe 'kallithea::install' do
 
     it { should contain_kallithea__package('python-ldap') }
     it { should contain_file('/etc/init.d/kallithea') }
-    it { should_not contain_class('python') }
+    it { should contain_class('python').with_virtualenv('true') }
     it { should_not contain_class('git') }
   end
 
