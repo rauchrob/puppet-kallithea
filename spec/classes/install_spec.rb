@@ -29,6 +29,7 @@ describe 'kallithea::install' do
 
     it { should contain_file('/etc/systemd/system/kallithea.service').with_ensure(:file) }
     it { should contain_file('/etc/init.d/kallithea').with_ensure(:absent) }
+    it { should_not contain_file('/var/log/kallithea') }
   end
 
   context "with service_provider = 'init'" do
@@ -36,6 +37,7 @@ describe 'kallithea::install' do
 
     it { should contain_file('/etc/systemd/system/kallithea.service').with_ensure(:absent) }
     it { should contain_file('/etc/init.d/kallithea').with_ensure(:file) }
+    it { should contain_file('/var/log/kallithea') }
   end
 
   context "with ldap_support = false" do
