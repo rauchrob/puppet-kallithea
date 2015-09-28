@@ -105,6 +105,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `manage_git`: Whether to install git using the [`puppetlabs/git`](https://github.com/puppetlabs/puppetlabs-git) module. Defaults to `false`.
 * `manage_python`: Whether to install Python using the [`stankevich/python`](https://github.com/stankevich/puppet-python) module. Defaults to `true`.
 * `proxy`: If not `undef`, this will be the HTTP proxy settings which are used when installing Kallithea via pip. Defaults to `undef`.
+* `rcextensions`: Setup a custom [`rcextensions`](http://kallithea.readthedocs.org/en/latest/setup.html#extensions) package with provided content.
 * `repo_root`: The directory under which Kallithea will put the repositories. Defaults to `${app_root}/repos`.
 * `seed_db`: Whether to initialize Kallitheas database during installation. A lockfile is created to prevent subsequent database resets (see documentation of the kallithea::seed_db class). Defaults to `false`.
 * `service_enable`: Whether to enable the Kallithea service on boot. Defaults to `true`.

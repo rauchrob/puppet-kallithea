@@ -8,6 +8,7 @@ class kallithea::install (
   $ldap_support     = $::kallithea::ldap_support,
   $manage_git       = $::kallithea::manage_git,
   $manage_python    = $::kallithea::manage_python,
+  $rcextensions     = $::kallithea::rcextensions,
   $repo_root        = $::kallithea::repo_root,
   $service_provider = $::kallithea::service_provider,
   $version          = $::kallithea::version,
@@ -107,4 +108,18 @@ class kallithea::install (
     kallithea::package { 'python-ldap': }
   }
 
+  if $rcextensions {
+    file { "${app_root}/rcextensions":
+      ensure => directory,
+      owner  => $app_user,
+      group  => $app_user,
+    }
+
+    file { "${app_root}/rcextensions/__init__.py":
+      content => $rcextensions,
+      owner   => $app_user,
+      group   => $app_user,
+      notify  => Service[kallithea],
+    }
+  }
 }

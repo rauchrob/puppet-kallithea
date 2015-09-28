@@ -22,6 +22,7 @@ describe 'kallithea::install' do
     it { should contain_file('/etc/init.d/kallithea') }
     it { should contain_class('python').with_virtualenv('true') }
     it { should_not contain_class('git') }
+    it { should_not contain_file('/app/root/rcextensions/__init__.py') }
   end
 
   context "with service_provider = 'systemd'" do
@@ -56,6 +57,12 @@ describe 'kallithea::install' do
     let(:params) { default_params.merge({ :version => 'x.y.z' }) }
 
     it { should contain_kallithea__package('kallithea').with_version('x.y.z') }
+  end
+
+  context "with rcextensions = 'foobar'" do
+    let(:params) { default_params.merge({ :rcextensions => 'foobar'}) }
+
+    it { should contain_file('/app/root/rcextensions/__init__.py').with_content('foobar') }
   end
 
 end

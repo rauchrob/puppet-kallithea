@@ -82,6 +82,9 @@
 #   The version of Kallithea to installed. If undef, the latest available version
 #   will be used.
 #
+# [*rcextensions*]
+#   Setup custom rcextensions package with provided content.
+#
 class kallithea (
   $admin_mail = $kallithea::params::admin_mail,
   $admin_pass = $kallithea::params::admin_pass,
@@ -93,6 +96,7 @@ class kallithea (
   $ldap_support = $kallithea::params::ldap_support,
   $manage_git = $kallithea::params::manage_git,
   $manage_python = $kallithea::params::manage_python,
+  $rcextensions = $kallithea::params::rcextensions,
   $repo_root = $kallithea::params::repo_root,
   $seed_db = $kallithea::params::seed_db,
   $service_enable = $kallithea::params::service_enable,
@@ -109,6 +113,7 @@ class kallithea (
     $admin_user,
     $admin_pass,
     $admin_mail,
+    $rcextensions,
     $version,
   )
   validate_absolute_path([$app_root, $repo_root])
