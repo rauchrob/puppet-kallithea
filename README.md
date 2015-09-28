@@ -109,6 +109,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `seed_db`: Whether to initialize Kallitheas database during installation. A lockfile is created to prevent subsequent database resets (see documentation of the kallithea::seed_db class). Defaults to `false`.
 * `service_enable`: Whether to enable the Kallithea service on boot. Defaults to `true`.
 * `service_ensure`: Whether to start Kallithea as a service. Defaults to `true`.
+* `service_provider`: Set to override Puppets default service provider in the definition of the Kallithea service. Supported values are `init` and `systemd`.
 * `version`: The version of Kallithea which should be installed. If `undef`, the latest available version will be installed. Defaults to `undef`.
 
 **Note:** The values of the parameters `admin_mail`, `admin_pass` and `admin_user` are only relevant if you are using `seed_db => true`.

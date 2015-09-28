@@ -9,7 +9,7 @@ class kallithea::install (
   $manage_git       = $::kallithea::manage_git,
   $manage_python    = $::kallithea::manage_python,
   $repo_root        = $::kallithea::repo_root,
-  $service_provider = $::kallithea::params::service_provider,
+  $service_provider = $::kallithea::service_provider,
   $version          = $::kallithea::version,
 ) inherits kallithea::params {
 
@@ -51,7 +51,7 @@ class kallithea::install (
         content => template($kallithea::params::service_template),
       }
     }
-    default: { fail("service_provider ${service_provider} not supported") }
+    default: { fail("service_provider '${service_provider}' not supported") }
   }
 
   ############################################################

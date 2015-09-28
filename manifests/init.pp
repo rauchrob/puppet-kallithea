@@ -54,6 +54,9 @@
 # [*service_enable*]
 #   Whether to enable the kallithea service on boot.
 #
+# [*service_enable*] Set to override Puppets default service provider in the
+#   definition of the Kallithea service.
+#
 # [*seed_db*]
 #   Whether to initialize kallitheas database during installation. A lockfile
 #   is created to prevent subsequent database resets (see documentation of the
@@ -94,6 +97,7 @@ class kallithea (
   $seed_db = $kallithea::params::seed_db,
   $service_enable = $kallithea::params::service_enable,
   $service_ensure = $kallithea::params::service_ensure,
+  $service_provider = $kallithea::params::service_provider,
   $version = $kallithea::params::version,
 ) inherits kallithea::params {
 

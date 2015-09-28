@@ -12,6 +12,7 @@ describe 'kallithea::install' do
     :app_user => 'myuser',
     :ldap_support => true,
     :repo_root => '/repo/root',
+    :service_provider => 'init',
   }
 
   context "with default params" do
