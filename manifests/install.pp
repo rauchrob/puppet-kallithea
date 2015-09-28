@@ -9,7 +9,7 @@ class kallithea::install (
   $manage_git       = $::kallithea::manage_git,
   $manage_python    = $::kallithea::manage_python,
   $repo_root        = $::kallithea::repo_root,
-  $service_provider = $::kallithea::params::service_provider,
+  $service_provider = $::kallithea::service_provider,
   $version          = $::kallithea::version,
 ) inherits kallithea::params {
 
@@ -38,6 +38,10 @@ class kallithea::install (
         mode    => '0644',
         content => template('kallithea/systemd/kallithea.service.erb'),
       }
+
+      file { '/etc/init.d/kallithea':
+        ensure => absent,
+      }
     }
     'init': {
       file { '/etc/init.d/kallithea':
@@ -50,8 +54,12 @@ class kallithea::install (
         ensure => directory,
         owner  => $app_user,
       }
+
+      file { '/etc/systemd/system/kallithea.service':
+        ensure => absent,
+      }
     }
-    default: { fail("service_provider ${service_provider} not supported") }
+    default: { fail("service_provider '${service_provider}' not supported") }
   }
 
   ############################################################

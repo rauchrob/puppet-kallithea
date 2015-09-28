@@ -12,6 +12,7 @@ describe 'kallithea::install' do
     :app_user => 'myuser',
     :ldap_support => true,
     :repo_root => '/repo/root',
+    :service_provider => 'init',
   }
 
   context "with default params" do
@@ -26,7 +27,15 @@ describe 'kallithea::install' do
   context "with service_provider = 'systemd'" do
     let(:params) { default_params.merge({ :service_provider => 'systemd' }) }
 
-    it { should contain_file('/etc/systemd/system/kallithea.service') }
+    it { should contain_file('/etc/systemd/system/kallithea.service').with_ensure(:file) }
+    it { should contain_file('/etc/init.d/kallithea').with_ensure(:absent) }
+  end
+
+  context "with service_provider = 'init'" do
+    let(:params) { default_params.merge({ :service_provider => 'init' }) }
+
+    it { should contain_file('/etc/systemd/system/kallithea.service').with_ensure(:absent) }
+    it { should contain_file('/etc/init.d/kallithea').with_ensure(:file) }
   end
 
   context "with ldap_support = false" do
