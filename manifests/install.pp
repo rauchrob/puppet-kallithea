@@ -43,12 +43,20 @@ class kallithea::install (
         mode    => '0644',
         content => template('kallithea/systemd/kallithea.service.erb'),
       }
+
+      file { '/etc/init.d/kallithea':
+        ensure => absent,
+      }
     }
     'init': {
       file { '/etc/init.d/kallithea':
         ensure  => file,
         mode    => '0755',
         content => template($kallithea::params::service_template),
+      }
+
+      file { '/etc/systemd/system/kallithea.service':
+        ensure => absent,
       }
     }
     default: { fail("service_provider '${service_provider}' not supported") }
