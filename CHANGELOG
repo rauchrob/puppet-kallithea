@@ -1,5 +1,8 @@
 Upcoming Release 0.3.1
 - update metadata
+- improve systemd support
+- improve spec tests
+- fix #17
 
 2015-07-28 Release 0.3.0
 - add $manage_git parameter
