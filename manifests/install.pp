@@ -31,11 +31,6 @@ class kallithea::install (
     group  => $app_user,
   }
 
-  file { '/var/log/kallithea':
-    ensure => directory,
-    owner  => $app_user,
-  }
-
   case $service_provider {
     'systemd': {
       file { '/etc/systemd/system/kallithea.service':
@@ -49,6 +44,11 @@ class kallithea::install (
         ensure  => file,
         mode    => '0755',
         content => template($kallithea::params::service_template),
+      }
+
+      file { '/var/log/kallithea':
+        ensure => directory,
+        owner  => $app_user,
       }
     }
     default: { fail("service_provider ${service_provider} not supported") }
