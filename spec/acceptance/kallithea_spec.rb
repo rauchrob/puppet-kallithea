@@ -110,6 +110,28 @@ describe 'kallithea class' do
     end
   end
 
+  context 'change configuration with port parameter' do
+    # Using puppet_apply as a helper
+    it 'should work idempotently with no errors' do
+      pp = <<-EOS
+      class { 'kallithea':
+        port => 1234,
+      }
+      EOS
+
+      # Run it twice and test for idempotency
+      apply_manifest(pp, :catch_failures => true)
+      apply_manifest(pp, :catch_changes  => true)
+    end
+
+    describe port(1234) do
+      it {
+        sleep(10)
+        should be_listening
+      }
+    end
+  end
+
   context 'downgrading to kallithea v0.2.1' do
     # Using puppet_apply as a helper
     it 'should work idempotently with no errors' do
