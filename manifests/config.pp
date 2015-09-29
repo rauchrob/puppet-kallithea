@@ -7,6 +7,7 @@ class kallithea::config (
   $app_root    = $::kallithea::app_root,
   $config      = $::kallithea::config,
   $config_hash = $::kallithea::config_hash,
+  $port        = $::kallithea::port,
 ) {
 
   $config_file = "${app_root}/kallithea.ini"
@@ -14,6 +15,10 @@ class kallithea::config (
   if $config {
     if $config_hash {
       warning('$config given, ignoring $config_hash parameter.')
+    }
+
+    if $port {
+      warning('$config given, ignoring $port parameter.')
     }
 
     file { $config_file:
@@ -37,5 +42,12 @@ class kallithea::config (
       create_resources(kallithea::ini_setting, $ini_settings)
     }
 
+    if $port {
+      kallithea::ini_setting { 'server:main/port':
+        section => 'server:main',
+        setting => 'port',
+        value   => $port,
+      }
+    }
   }
 }
