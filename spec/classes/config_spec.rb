@@ -34,4 +34,10 @@ describe 'kallithea::config' do
     it { should contain_kallithea__ini_setting('sec2/key3').with_value('val3') }
   end
 
+  context 'with port = 1234 set' do
+    let(:params) { default_params.merge({ :port => '1234' }) }
+
+    it { should contain_kallithea__ini_setting('server:main/port').with_value(1234) }
+  end
+
 end

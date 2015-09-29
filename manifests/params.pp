@@ -14,6 +14,7 @@ class kallithea::params {
   $ldap_support = true
   $manage_git = false
   $manage_python = true
+  $port = undef
   $rcextensions = undef
   $repo_root = "${app_root}/repos"
   $seed_db = false
