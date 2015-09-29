@@ -104,6 +104,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `ldap_support`: If set to true, the python-ldap package and its dependencies will be installed into Kallitheas python environment. Defaults to `true`.
 * `manage_git`: Whether to install git using the [`puppetlabs/git`](https://github.com/puppetlabs/puppetlabs-git) module. Defaults to `false`.
 * `manage_python`: Whether to install Python using the [`stankevich/python`](https://github.com/stankevich/puppet-python) module. Defaults to `true`.
+* `port`: Set Kallitheas listening port to specified value. Must be given as string. Defaults to whatever Kallitheas default is.
 * `proxy`: If not `undef`, this will be the HTTP proxy settings which are used when installing Kallithea via pip. Defaults to `undef`.
 * `rcextensions`: Setup a custom [`rcextensions`](http://kallithea.readthedocs.org/en/latest/setup.html#extensions) package with provided content.
 * `repo_root`: The directory under which Kallithea will put the repositories. Defaults to `${app_root}/repos`.
