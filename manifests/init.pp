@@ -88,6 +88,9 @@
 # [*port*]
 #   Configure listening port. Must be given as string.
 #
+# [*whoosh_cronjob*]
+#   Setup cronjob for generating the index for Kallitheas Whoosh full text search.
+#
 class kallithea (
   $admin_mail = $kallithea::params::admin_mail,
   $admin_pass = $kallithea::params::admin_pass,
@@ -107,6 +110,7 @@ class kallithea (
   $service_ensure = $kallithea::params::service_ensure,
   $service_provider = $kallithea::params::service_provider,
   $version = $kallithea::params::version,
+  $whoosh_cronjob = $kallithea::params::whoosh_cronjob,
 ) inherits kallithea::params {
 
   ##################################################
@@ -128,6 +132,7 @@ class kallithea (
     $seed_db,
     $service_enable,
     $service_ensure,
+    $whoosh_cronjob,
   )
 
   if $config {
@@ -135,6 +140,11 @@ class kallithea (
   }
 
   ##################################################
+
+  class { '::kallithea::install': } ->
+  class { '::kallithea::config': } ~>
+  class { '::kallithea::service': } ->
+  Class['::kallithea']
 
   if $seed_db {
     class { 'kallithea::seed_db':
@@ -146,10 +156,11 @@ class kallithea (
     }
   }
 
-  class { '::kallithea::install': } ->
-  class { '::kallithea::config': } ~>
-  class { '::kallithea::service': } ->
-  Class['::kallithea']
+  if $whoosh_cronjob {
+    class { 'kallithea::cron::whoosh':
+      require => Class[kallithea::config],
+    }
+  }
 
 }
 

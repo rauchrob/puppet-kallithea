@@ -21,6 +21,7 @@ class kallithea::params {
   $service_enable = true
   $service_ensure = true
   $version = undef
+  $whoosh_cronjob = true
 
   case $::osfamily {
     'RedHat': {

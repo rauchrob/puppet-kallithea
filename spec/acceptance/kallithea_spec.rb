@@ -52,6 +52,10 @@ describe 'kallithea class' do
       its(:stdout) { should eq "HTTP/1.1 200 OK\n" }
     end
 
+    describe cron do
+      it { should have_entry('5 * * * * /srv/kallithea/venv/bin/paster make-index /srv/kallithea/kallithea.ini').with_user('kallithea') }
+    end
+
     describe command('puppet resource service kallithea ensure=stopped') do
       its(:exit_status) { should eq 0 }
     end
