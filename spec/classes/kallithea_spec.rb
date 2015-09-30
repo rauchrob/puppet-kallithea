@@ -19,7 +19,8 @@ describe 'kallithea' do
 
     it { is_expected.to contain_class('kallithea::params') }
     it { is_expected.to contain_class('kallithea::install').that_comes_before('kallithea::config') }
-    it { is_expected.to contain_class('kallithea::config') }
+    it { is_expected.to contain_class('kallithea::config').that_notifies('kallithea::service') }
+    it { is_expected.to contain_class('kallithea::service') }
   end
 
   context 'unsupported operating system' do
