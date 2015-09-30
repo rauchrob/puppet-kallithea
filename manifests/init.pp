@@ -107,6 +107,7 @@ class kallithea (
   $service_ensure = $kallithea::params::service_ensure,
   $service_provider = $kallithea::params::service_provider,
   $version = $kallithea::params::version,
+  $whoosh_cronjob = $kallithea::params::whoosh_cronjob,
 ) inherits kallithea::params {
 
   ##################################################
@@ -128,6 +129,7 @@ class kallithea (
     $seed_db,
     $service_enable,
     $service_ensure,
+    $whoosh_cronjob,
   )
 
   if $config {
@@ -143,6 +145,12 @@ class kallithea (
       mail      => $admin_mail,
       subscribe => Class['kallithea::config'],
       before    => Class['kallithea::service'],
+    }
+  }
+
+  if $whoosh_cronjob {
+    class { 'kallithea::cron::whoosh':
+      require => Class[kallithea::config],
     }
   }
 
