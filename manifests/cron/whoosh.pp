@@ -5,8 +5,8 @@
 # text search.
 #
 class kallithea::cron::whoosh (
-  $python_venv = $kallithea::install::venv,
-  $config_file = $kallithea::config::config_file,
+  $python_venv = $::kallithea::install::venv,
+  $config_file = $::kallithea::config::config_file,
   $cron_params = {},
 ) {
 

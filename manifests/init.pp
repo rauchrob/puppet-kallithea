@@ -141,6 +141,11 @@ class kallithea (
 
   ##################################################
 
+  class { '::kallithea::install': } ->
+  class { '::kallithea::config': } ~>
+  class { '::kallithea::service': } ->
+  Class['::kallithea']
+
   if $seed_db {
     class { 'kallithea::seed_db':
       user      => $admin_user,
@@ -156,11 +161,6 @@ class kallithea (
       require => Class[kallithea::config],
     }
   }
-
-  class { '::kallithea::install': } ->
-  class { '::kallithea::config': } ~>
-  class { '::kallithea::service': } ->
-  Class['::kallithea']
 
 }
 
