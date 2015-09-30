@@ -1,8 +1,11 @@
-Upcoming Release 0.3.1
+Upcoming Release 0.4
 - update metadata
 - improve systemd support
-- improve spec tests
-- fix #17 and #16
+- add $port parameter (from #18)
+- implement #16, #17 and #19:
+  - add $rcextensions parameter
+  - add $service_provider parameter
+  - add $whoosh_cronjob parameter
 
 2015-07-28 Release 0.3.0
 - add $manage_git parameter
