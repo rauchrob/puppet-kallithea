@@ -53,7 +53,7 @@ describe 'kallithea class' do
     end
 
     describe cron do
-      it { should have_entry('* 5 * * * /srv/kallithea/venv/bin/paster make-index /srv/kallithea/kallithea.ini').with_user('kallithea') }
+      it { should have_entry('5 * * * * /srv/kallithea/venv/bin/paster make-index /srv/kallithea/kallithea.ini').with_user('kallithea') }
     end
 
     describe command('puppet resource service kallithea ensure=stopped') do
