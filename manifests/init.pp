@@ -88,6 +88,9 @@
 # [*port*]
 #   Configure listening port. Must be given as string.
 #
+# [*whoosh_cronjob*]
+#   Setup cronjob for generating the index for Kallitheas Whoosh full text search.
+#
 class kallithea (
   $admin_mail = $kallithea::params::admin_mail,
   $admin_pass = $kallithea::params::admin_pass,

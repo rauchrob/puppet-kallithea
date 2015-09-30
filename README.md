@@ -113,6 +113,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * `service_ensure`: Whether to start Kallithea as a service. Defaults to `true`.
 * `service_provider`: Set to override Puppets default service provider in the definition of the Kallithea service. Supported values are `init` and `systemd`.
 * `version`: The version of Kallithea which should be installed. If `undef`, the latest available version will be installed. Defaults to `undef`.
+* `whoosh_cronjob`: Setup cronjob for generating the index for Kallitheas Whoosh full text search. Defaults to `true`.
 
 **Note:** The values of the parameters `admin_mail`, `admin_pass` and `admin_user` are only relevant if you are using `seed_db => true`.
 
