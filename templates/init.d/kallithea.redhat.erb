@@ -107,7 +107,7 @@ case "$1" in
   status)
     status_kallithea
     RETVAL=$?
-    if [ ! $RETVAL -eq 0 ]; then
+    if [ $RETVAL -eq 0 ]; then
       echo "Kallithea server is running..."
     else
       echo "Kallithea server is stopped."
