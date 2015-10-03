@@ -65,17 +65,14 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 * [`kallithea`](#class-kallithea)
 * [`kallithea::seed_db`](#class-kallitheaseed_db)
 
-#### Private Classes
-
-* `kallithea::config`
-* `kallithea::install`
-* `kallithea::params`
-* `kallithea::service`
-
-### Defines
+### Public Defines
 
 * [`kallithea::package`](#define-kallitheapackage)
 * [`kallithea::ini_setting`](#define-inisetting)
+
+### Facts
+
+* `kallithea_version`
 
 #### Class `kallithea`
 
