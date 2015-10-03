@@ -88,6 +88,10 @@ class kallithea::install (
     ],
   }
 
+  kallithea::stored_setting { 'venv':
+    data => { 'default' => { 'venv' => $venv } },
+  }
+
   # Normally, the `PasteScript` package is a `setup_requires`-dependency of
   # `kallithea`. This has the problem, that when we are behind a corporate proxy and using an
   # internal package index, pip still tries to contact PyPi for installing

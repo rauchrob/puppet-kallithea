@@ -36,6 +36,15 @@ describe 'kallithea class' do
       it { should be_owned_by 'kallithea' }
     end
 
+    describe file('/etc/kallithea.yml') do
+      it { should be_file }
+    end
+
+    describe command('facter -p kallithea_version') do
+      its(:exit_status) { should eq 0 }
+      its(:stdout) { should_not eq '' }
+    end
+
     describe service('kallithea') do
       it { is_expected.to be_running }
       # for some reason, the following fails on acceptance testing,
@@ -78,10 +87,10 @@ describe 'kallithea class' do
       }
     end
 
-    describe command('/srv/kallithea/venv/bin/pip show kallithea') do
+    describe command('facter -p kallithea_version') do
       its(:exit_status) { should eq 0 }
       if kallithea_version
-        its(:stdout) { should match /^Version: #{kallithea_version}$/ }
+        its(:stdout) { should eq kallithea_version }
       end
     end
   end
@@ -152,8 +161,9 @@ describe 'kallithea class' do
       apply_manifest(pp, :catch_changes  => true)
     end
 
-    describe command('/srv/kallithea/venv/bin/pip show kallithea') do
-      its(:stdout) { should match /^Version: 0.2.1$/ }
+    describe command('facter -p kallithea_version') do
+      its(:exit_status) { should eq 0 }
+      its(:stdout) { should eq '0.2.1' }
     end
 
   end
