@@ -6,6 +6,7 @@ After=network.target
 User=<%= @app_user %>
 WorkingDirectory=<%= @app_root %>
 ExecStart=<%= @app_root %>/venv/bin/paster serve <%= @app_root %>/kallithea.ini
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
