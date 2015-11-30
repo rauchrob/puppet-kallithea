@@ -125,7 +125,7 @@ class kallithea (
     $rcextensions,
     $version,
   )
-  validate_absolute_path([$app_root, $repo_root])
+  validate_absolute_path($app_root, $repo_root)
   validate_bool(
     $ldap_support,
     $manage_python,
