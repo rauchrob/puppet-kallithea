@@ -33,8 +33,8 @@ class kallithea::config (
     require kallithea::config::initialize
 
     if $config_hash {
-      $ini_settings = kallithea_config_hash_to_inifile_resources($config_hash)
-      create_resources(kallithea::ini_setting, $ini_settings)
+      $config_ini_defaults = { path => $config_file }
+      create_ini_settings($config_hash, $config_ini_defaults)
     }
 
     if $port {
