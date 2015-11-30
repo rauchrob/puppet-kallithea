@@ -10,6 +10,7 @@ describe 'kallithea::config' do
   context 'with default params' do
     let(:params) { default_params }
 
+    it { should contain_class('kallithea::config::initialize').that_comes_before('kallithea::config') }
     it { should contain_exec('initialize kallithea config').with_user('myuser') }
     it { should_not contain_file('/app/root/kallithea.ini') }
   end
