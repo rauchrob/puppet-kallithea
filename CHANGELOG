@@ -7,6 +7,9 @@ Upcoming Release 0.4
   - add $service_provider parameter
   - add $whoosh_cronjob parameter
 
+2015-11-30 Release 0.3.1
+- auto-restart kallithea on failure when using systemd
+
 2015-07-28 Release 0.3.0
 - add $manage_git parameter
 - add $version parameter
