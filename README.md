@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/rauchrob/puppet-kallithea.svg?branch=master)](https://travis-ci.org/rauchrob/puppet-kallithea)
 [![Puppet Forge](http://img.shields.io/puppetforge/v/rauch/kallithea.svg)](https://forge.puppetlabs.com/rauch/kallithea)
+[![Dependency Status](https://gemnasium.com/rauchrob/puppet-kallithea.svg)](https://gemnasium.com/rauchrob/puppet-kallithea)
 
 #### Table of Contents
 
