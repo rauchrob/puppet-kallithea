@@ -29,11 +29,11 @@ describe 'kallithea class' do
     # the puppetlabs/git module <=0.4.0 does not officially support Fedora, so
     # we do some rudimentary testing here:
     describe command('git --version') do
-      its(:exit_status) { should eq 0 }
+      its(:exit_status) { is_expected.to eq 0 }
     end
 
     describe file('/srv/kallithea/kallithea.db') do
-      it { should be_owned_by 'kallithea' }
+      it { is_expected.to be_owned_by 'kallithea' }
     end
 
     describe service('kallithea') do
@@ -44,44 +44,44 @@ describe 'kallithea class' do
     end
 
     describe port(5000) do
-      it { should be_listening }
+      it { is_expected.to be_listening }
     end
 
     describe command('curl -I localhost:5000 2> /dev/null | head -n1') do
-      its(:exit_status) { should eq 0 }
-      its(:stdout) { should eq "HTTP/1.1 200 OK\n" }
+      its(:exit_status) { is_expected.to eq 0 }
+      its(:stdout) { is_expected.to eq "HTTP/1.1 200 OK\n" }
     end
 
     describe cron do
-      it { should have_entry('5 * * * * /srv/kallithea/venv/bin/paster make-index /srv/kallithea/kallithea.ini').with_user('kallithea') }
+      it { is_expected.to have_entry('5 * * * * /srv/kallithea/venv/bin/paster make-index /srv/kallithea/kallithea.ini').with_user('kallithea') }
     end
 
     describe command('puppet resource service kallithea ensure=stopped') do
-      its(:exit_status) { should eq 0 }
+      its(:exit_status) { is_expected.to eq 0 }
     end
     
     describe port(5000) do
       it { 
         sleep(5)
-        should_not be_listening
+        is_expected.not_to be_listening
       }
     end
 
     describe command('puppet resource service kallithea ensure=running') do
-      its(:exit_status) { should eq 0 }
+      its(:exit_status) { is_expected.to eq 0 }
     end
     
     describe port(5000) do
       it {
         sleep(10)
-        should be_listening
+        is_expected.to be_listening
       }
     end
 
     describe command('/srv/kallithea/venv/bin/pip show kallithea') do
-      its(:exit_status) { should eq 0 }
+      its(:exit_status) { is_expected.to eq 0 }
       if kallithea_version
-        its(:stdout) { should match /^Version: #{kallithea_version}$/ }
+        its(:stdout) { is_expected.to match /^Version: #{kallithea_version}$/ }
       end
     end
   end
@@ -111,7 +111,7 @@ describe 'kallithea class' do
     describe port(12345) do
       it {
         sleep(10)
-        should be_listening
+        is_expected.to be_listening
       }
     end
   end
@@ -133,7 +133,7 @@ describe 'kallithea class' do
     describe port(1234) do
       it {
         sleep(10)
-        should be_listening
+        is_expected.to be_listening
       }
     end
   end
@@ -153,7 +153,7 @@ describe 'kallithea class' do
     end
 
     describe command('/srv/kallithea/venv/bin/pip show kallithea') do
-      its(:stdout) { should match /^Version: 0.2.1$/ }
+      its(:stdout) { is_expected.to match /^Version: 0.2.1$/ }
     end
 
   end

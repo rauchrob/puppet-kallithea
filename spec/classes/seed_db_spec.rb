@@ -9,7 +9,7 @@ describe 'kallithea::seed_db' do
   context "with app_user => 'kallithea'" do
     let(:params) {{ :app_user => 'kallithea' }}
 
-    it { should contain_exec('kallithea_seed_db').with_user('kallithea') }
+    it { is_expected.to contain_exec('kallithea_seed_db').with_user('kallithea') }
   end
 
 

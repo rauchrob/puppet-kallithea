@@ -10,14 +10,14 @@ describe 'kallithea::package' do
     let(:title) { 'mypackage' }
     let(:params) { default_params }
 
-    it { should contain_python__pip('mypackage@/my/venv').with_pkgname('mypackage') }
+    it { is_expected.to contain_python__pip('mypackage@/my/venv').with_pkgname('mypackage') }
   end
 
   context "with version specified" do
     let(:title) { 'mypackage' }
     let(:params) { default_params.merge({:version => 'x.y.z' }) }
 
-    it { should contain_python__pip('mypackage@/my/venv').with_pkgname('mypackage==x.y.z') }
+    it { is_expected.to contain_python__pip('mypackage@/my/venv').with_pkgname('mypackage==x.y.z') }
   end
 
 end
