@@ -12,7 +12,6 @@ describe 'kallithea::config' do
   context 'with default params' do
     let(:params) { default_params }
 
-    it { is_expected.to contain_class('kallithea::config::initialize').that_comes_before('kallithea::config') }
     it { is_expected.to contain_exec('initialize kallithea config').with_user('myuser') }
     it { is_expected.not_to contain_file(config_file) }
   end

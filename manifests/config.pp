@@ -30,7 +30,12 @@ class kallithea::config (
     }
   } else {
 
-    require kallithea::config::initialize
+    exec { 'initialize kallithea config':
+      command => "/bin/sh -c \". ${app_root}/venv/bin/activate && paster make-config Kallithea kallithea.ini\"",
+      cwd     => $app_root,
+      creates => $config_file,
+      user    => $app_user,
+    }
 
     if $config_hash {
       $config_ini_defaults = { path => $config_file }
@@ -46,13 +51,3 @@ class kallithea::config (
     }
   }
 }
-
-class kallithea::config::initialize {
-  exec { 'initialize kallithea config':
-    command => "/bin/sh -c \". ${app_root}/venv/bin/activate && paster make-config Kallithea kallithea.ini\"",
-    cwd     => $::kallithea::config::app_root,
-    creates => $::kallithea::config::config_file,
-    user    => $::kallithea::config::app_user,
-  }
-}
-
