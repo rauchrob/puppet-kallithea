@@ -20,17 +20,22 @@ env:
   - PUPPET_VERSION="~> 3.8.0" STRICT_VARIABLES=yes
   - PUPPET_VERSION="~> 3.8.0" STRICT_VARIABLES=yes FUTURE_PARSER=yes
   - PUPPET_VERSION="~> 4.2.0"
+  - PUPPET_VERSION="~> 4.3.0"
 matrix:
   exclude:
   # Ruby 1.8.7
   - rvm: 1.8.7
     env: PUPPET_VERSION="~> 4.2.0"
+  - rvm: 1.8.7
+    env: PUPPET_VERSION="~> 4.3.0"
 
   # Ruby 1.9.3
   - rvm: 1.9.3
     env: PUPPET_VERSION="~> 2.7.0"
   - rvm: 1.9.3
     env: PUPPET_VERSION="~> 4.2.0"
+  - rvm: 1.9.3
+    env: PUPPET_VERSION="~> 4.3.0"
     
   # Ruby 2.0.0
   - rvm: 2.0.0

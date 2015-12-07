@@ -265,7 +265,7 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    puppet (4.2.3)
+    puppet (4.3.1)
       facter (> 2.0, < 4)
       hiera (>= 2.0, < 4)
       json_pure
@@ -376,7 +376,7 @@ DEPENDENCIES
   beaker-rspec
   guard-rake
   metadata-json-lint
-  puppet (~> 4.2.0)
+  puppet (~> 4.3.0)
   puppet-blacksmith
   puppetlabs_spec_helper
   rake
