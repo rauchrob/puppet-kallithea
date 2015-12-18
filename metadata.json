@@ -1,6 +1,6 @@
 {
   "name": "rauch-kallithea",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Robert Rauch (GNS Systems)",
   "summary": "Manage Kallithea, a free source code management system",
   "license": "Apache-2.0",
