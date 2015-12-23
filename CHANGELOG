@@ -2,7 +2,8 @@ Upcoming Release 0.4
 - update metadata
 - improve systemd support
 - add $port parameter (from #18)
-- implement #16, #17 and #19:
+- implement #10, #16, #17 and #19:
+  - add kallithea_version fact
   - add $rcextensions parameter
   - add $service_provider parameter
   - add $whoosh_cronjob parameter

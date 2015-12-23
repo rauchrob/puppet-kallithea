@@ -36,6 +36,10 @@ describe 'kallithea class' do
       it { is_expected.to be_owned_by 'kallithea' }
     end
 
+    describe file('/etc/kallithea.yml') do
+      it { should be_file }
+    end
+
     describe service('kallithea') do
       it { is_expected.to be_running }
       # for some reason, the following fails on acceptance testing,

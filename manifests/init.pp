@@ -141,6 +141,7 @@ class kallithea (
 
   ##################################################
 
+  class { '::kallithea::settings_store': } ->
   class { '::kallithea::install': } ->
   class { '::kallithea::config': } ~>
   class { '::kallithea::service': } ->

@@ -17,6 +17,7 @@ RSpec.configure do |c|
   c.before :suite do
     # Install module and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'kallithea')
+    on hosts, puppet('module', 'install', 'richardc/datacat'), { :acceptable_exit_codes => [0,1] }
     on hosts, puppet('module', 'install', 'puppetlabs/inifile'), { :acceptable_exit_codes => [0,1] }
     on hosts, puppet('module', 'install', 'puppetlabs/stdlib'), { :acceptable_exit_codes => [0,1] }
     on hosts, puppet('module', 'install', 'stankevich/python'), { :acceptable_exit_codes => [0,1] }
