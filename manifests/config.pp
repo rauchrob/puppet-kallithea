@@ -38,7 +38,10 @@ class kallithea::config (
     }
 
     if $config_hash {
-      $config_ini_defaults = { path => $config_file }
+      $config_ini_defaults = {
+        path    => $config_file,
+        require => Exec['initialize kallithea config'],
+      }
       create_ini_settings($config_hash, $config_ini_defaults)
     }
 
