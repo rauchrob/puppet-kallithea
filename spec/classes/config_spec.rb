@@ -33,7 +33,8 @@ describe 'kallithea::config' do
 
     it { is_expected.to contain_ini_setting("#{config_file} [sec1] key1").with_value('val1') }
     it { is_expected.to contain_ini_setting("#{config_file} [sec1] key2").with_value('val2') }
-    it { is_expected.to contain_ini_setting("#{config_file} [sec2] key3").with_value('val3') }
+    it { is_expected.to contain_ini_setting("#{config_file} [sec2] key3").with_value('val3').
+         that_requires('Exec[initialize kallithea config]') }
   end
 
   context 'with port = 1234 set' do
