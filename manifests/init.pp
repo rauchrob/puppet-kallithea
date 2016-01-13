@@ -141,10 +141,11 @@ class kallithea (
 
   ##################################################
 
+  anchor { 'kallithea::begin': } ->
   class { '::kallithea::install': } ->
   class { '::kallithea::config': } ~>
   class { '::kallithea::service': } ->
-  Class['::kallithea']
+  anchor { 'kallithea::end': }
 
   if $seed_db {
     class { 'kallithea::seed_db':
