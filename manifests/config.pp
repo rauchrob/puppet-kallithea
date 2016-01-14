@@ -31,7 +31,7 @@ class kallithea::config (
   } else {
 
     exec { 'initialize kallithea config':
-      command => "/bin/sh -c \". ${app_root}/venv/bin/activate && paster make-config Kallithea kallithea.ini\"",
+      command => "${app_root}/venv/bin/paster make-config Kallithea kallithea.ini",
       cwd     => $app_root,
       creates => $config_file,
       user    => $app_user,
