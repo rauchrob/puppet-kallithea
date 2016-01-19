@@ -103,6 +103,8 @@ Put the classes, types, and resources for customizing, configuring, and doing th
 
   This parameter Will be ignored, if the `$config` parameter has been given.
 * `ldap_support`: If set to true, the python-ldap package and its dependencies will be installed into Kallitheas python environment. Defaults to `true`.
+* `listen_ip`: Set Kallithea listening IP to the specified value. Must be given
+  as string, defaults to Kallitheas defaults.
 * `manage_git`: Whether to install git using the [`puppetlabs/git`](https://github.com/puppetlabs/puppetlabs-git) module. Defaults to `false`.
 * `manage_python`: Whether to install Python using the [`stankevich/python`](https://github.com/stankevich/puppet-python) module. Defaults to `true`.
 * `port`: Set Kallitheas listening port to specified value. Must be given as string. Defaults to whatever Kallitheas default is.

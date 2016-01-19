@@ -7,6 +7,7 @@ class kallithea::config (
   $app_root    = $::kallithea::app_root,
   $config      = $::kallithea::config,
   $config_hash = $::kallithea::config_hash,
+  $listen_ip   = $::kallithea::listen_ip,
   $port        = $::kallithea::port,
 ) {
 
@@ -43,6 +44,14 @@ class kallithea::config (
         require => Exec['initialize kallithea config'],
       }
       create_ini_settings($config_hash, $config_ini_defaults)
+    }
+
+    if $listen_ip {
+      kallithea::ini_setting { 'server:main/host':
+        section => 'server:main',
+        setting => 'host',
+        value   => $listen_ip,
+      }
     }
 
     if $port {

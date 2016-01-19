@@ -48,6 +48,9 @@
 #   If set to true, the python-ldap package and its dependencies will be
 #   installed into kallitheas python environment.
 #
+# [*listen_ip*]
+#   The IP of the listening interface. Must be a string.
+#
 # [*service_ensure*]
 #   Whether to start kallithea as a service.
 #
@@ -100,6 +103,7 @@ class kallithea (
   $config = $kallithea::params::config,
   $config_hash = $kallithea::params::config_hash,
   $ldap_support = $kallithea::params::ldap_support,
+  $listen_ip = $kallithea::params::listen_ip,
   $manage_git = $kallithea::params::manage_git,
   $manage_python = $kallithea::params::manage_python,
   $port = $kallithea::params::port,

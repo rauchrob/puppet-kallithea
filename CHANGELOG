@@ -1,3 +1,7 @@
+Upcoming
+
+- add $listen_ip parameter, fixing #18
+
 2016-01-13 Release 0.4.2
 - implement the 'Anchor Pattern' for correct class containment
 

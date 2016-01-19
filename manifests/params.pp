@@ -12,6 +12,7 @@ class kallithea::params {
   $config = undef
   $config_hash = undef
   $ldap_support = true
+  $listen_ip = undef
   $manage_git = false
   $manage_python = true
   $port = undef

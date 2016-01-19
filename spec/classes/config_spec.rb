@@ -43,4 +43,9 @@ describe 'kallithea::config' do
     it { is_expected.to contain_kallithea__ini_setting('server:main/port').with_value(1234) }
   end
 
+  context 'with listen_ip = 0.0.0.0 set' do
+    let(:params) { default_params.merge({ :listen_ip => '0.0.0.0' }) }
+
+    it { is_expected.to contain_kallithea__ini_setting('server:main/host').with_value('0.0.0.0') }
+  end
 end
