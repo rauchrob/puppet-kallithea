@@ -92,10 +92,13 @@ class kallithea::install (
   # `kallithea`. This has the problem, that when we are behind a corporate proxy and using an
   # internal package index, pip still tries to contact PyPi for installing
   # `PasteScript`. As a workaround we do the following:
-  kallithea::package { 'PasteScript': } ->
+  kallithea::package { 'PasteScript':
+    before => Kallithea::Package['kallithea'],
+  }
 
   kallithea::package { 'kallithea':
-    version => $version,
+    ensure => $version,
+    url    => "${::kallithea::params::repo_url}",
   }
 
   package { $::kallithea::params::packages:

@@ -56,7 +56,7 @@ describe 'kallithea::install' do
   context "with version = 'x.y.z'" do
     let(:params) { default_params.merge({ :version => 'x.y.z' }) }
 
-    it { is_expected.to contain_kallithea__package('kallithea').with_version('x.y.z') }
+    it { is_expected.to contain_kallithea__package('kallithea').with_ensure('x.y.z') }
   end
 
   context "with rcextensions = 'foobar'" do

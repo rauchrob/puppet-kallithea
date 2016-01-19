@@ -1,6 +1,8 @@
 Upcoming
 
 - add $listen_ip parameter, fixing #18
+- add $url and $ensure parameter to kallithea::package
+- switch to installing kallithea from sources
 
 2016-01-13 Release 0.4.2
 - implement the 'Anchor Pattern' for correct class containment

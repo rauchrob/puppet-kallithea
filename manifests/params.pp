@@ -18,6 +18,7 @@ class kallithea::params {
   $port = undef
   $rcextensions = undef
   $repo_root = "${app_root}/repos"
+  $repo_url = "hg+https://bitbucket.org/conservancy/kallithea"
   $seed_db = false
   $service_enable = true
   $service_ensure = true
@@ -26,12 +27,12 @@ class kallithea::params {
 
   case $::osfamily {
     'RedHat': {
-      $packages = ['gcc']
+      $packages = ['gcc', 'mercurial']
       $ldap_packages = ['openldap-devel']
       $install_pip = false
     }
     'Debian': {
-      $packages = []
+      $packages = ['mercurial']
       $install_pip = true
       $ldap_packages = ['libldap2-dev', 'libsasl2-dev']
     }

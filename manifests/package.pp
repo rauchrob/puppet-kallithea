@@ -4,22 +4,19 @@
 # Kallitheas virtualenv.
 #
 define kallithea::package (
-  $venv = $::kallithea::install::venv,
-  $version = undef,
+  $ensure = present,
+  $url = undef,
 ) {
-
-  if $version {
-    $pkgname = "${title}==${version}"
-  } else {
-    $pkgname = $title
-  }
+  $venv = $::kallithea::install::venv
 
   python::pip { "${title}@${venv}":
-    pkgname    => $pkgname,
-    virtualenv => $venv,
-    owner      => $::kallithea::app_user,
-    require    => Exec["python_virtualenv_${venv}"],
-    notify     => Class['kallithea::service'],
+    ensure       => $ensure,
+    pkgname      => $title,
+    url          => $url,
+    install_args => '--upgrade',
+    virtualenv   => $venv,
+    owner        => $::kallithea::app_user,
+    require      => Exec["python_virtualenv_${venv}"],
+    notify       => Class['kallithea::service'],
   }
-
 }

@@ -147,6 +147,8 @@ This define lets you install add ons for Kallithea by installing additional Pyth
 ##### Parameters 
 
 * `title`: The name of the Python package.
+* `url`: The URL to install from.
+* `ensure`: One of `present`, `absent`, `latest` or the version to be installed.
 
 #### Define `kallithea::ini_setting`
 
