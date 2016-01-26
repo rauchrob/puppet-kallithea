@@ -39,7 +39,7 @@ Kallithea is *"a free software source code management system supporting two lead
 
 For full functionality, Kallithea requires git to be installed. This module can optionally install git as well, but this requires the `puppetlabs/git` module.
 
-** *INCOMPATIBILITY WITH PUPPET 4.0 and 4.1* **: Due to a [known bug](https://tickets.puppetlabs.com/browse/MODULES-2867) in [`puppetlabs/stdlib`](https://forge.puppetlabs.com/puppetlabs/stdlib), the Puppet versions 4.0 and 4.1 are not supported. See also [here](https://github.com/rauchrob/puppet-kallithea/issues/22) for more information.
+**INCOMPATIBILITY WITH PUPPET 4.0 and 4.1**: Due to a [known bug](https://tickets.puppetlabs.com/browse/MODULES-2867) in [`puppetlabs/stdlib`](https://forge.puppetlabs.com/puppetlabs/stdlib), the Puppet versions 4.0 and 4.1 are not supported. See also [here](https://github.com/rauchrob/puppet-kallithea/issues/22) for more information.
 
 ### Beginning with kallithea
 
