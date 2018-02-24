@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/rauchrob/puppet-kallithea.svg?branch=master)](https://travis-ci.org/rauchrob/puppet-kallithea)
 [![Puppet Forge](http://img.shields.io/puppetforge/v/rauch/kallithea.svg)](https://forge.puppetlabs.com/rauch/kallithea)
 [![Maintainability](https://api.codeclimate.com/v1/badges/31cb6b64b1465859c166/maintainability)](https://codeclimate.com/github/rauchrob/puppet-kallithea/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/31cb6b64b1465859c166/test_coverage)](https://codeclimate.com/github/rauchrob/puppet-kallithea/test_coverage)
 
 #### Table of Contents
 
