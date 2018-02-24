@@ -18,10 +18,10 @@ describe 'kallithea' do
     let(:facts) { on_supported_os['centos-7-x86_64'] }
 
     it { is_expected.to contain_class('kallithea::params') }
-    it { is_expected.to contain_class('kallithea::install').that_comes_before('kallithea::config') }
-    it { is_expected.to contain_class('kallithea::config').that_notifies('kallithea::service') }
+    it { is_expected.to contain_class('kallithea::install').that_comes_before('Class[kallithea::config]') }
+    it { is_expected.to contain_class('kallithea::config').that_notifies('Class[kallithea::service]') }
     it { is_expected.to contain_class('kallithea::service') }
-    it { is_expected.to contain_class('kallithea::cron::whoosh').that_requires('kallithea::config') }
+    it { is_expected.to contain_class('kallithea::cron::whoosh').that_requires('Class[kallithea::config]') }
   end
 
   context 'with whoosh_cronjob => false' do

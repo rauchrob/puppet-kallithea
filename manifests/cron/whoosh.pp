@@ -9,11 +9,12 @@ class kallithea::cron::whoosh (
   $config_file = $::kallithea::config::config_file,
   $cron_params = {},
 ) {
+  require kallithea::params
 
   $cron_command = "${python_venv}/bin/paster make-index ${config_file}"
 
   $cron_default_params = {
-    user    => $kallithea::app_user,
+    user    => $kallithea::params::app_user,
     command => $cron_command,
     minute  => 5,
   }

@@ -3,13 +3,13 @@
 # This class is called from kallithea for service config.
 #
 class kallithea::config (
-  $app_user    = $::kallithea::app_user,
-  $app_root    = $::kallithea::app_root,
-  $config      = $::kallithea::config,
-  $config_hash = $::kallithea::config_hash,
-  $listen_ip   = $::kallithea::listen_ip,
-  $port        = $::kallithea::port,
-) {
+  $app_user    = $::kallithea::params::app_user,
+  $app_root    = $::kallithea::params::app_root,
+  $config      = $::kallithea::params::config,
+  $config_hash = $::kallithea::params::config_hash,
+  $listen_ip   = $::kallithea::params::listen_ip,
+  $port        = $::kallithea::params::port,
+) inherits kallithea::params {
 
   $config_file = "${app_root}/kallithea.ini"
 

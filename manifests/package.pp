@@ -7,6 +7,7 @@ define kallithea::package (
   $venv = $::kallithea::install::venv,
   $version = undef,
 ) {
+  require kallithea::params
 
   if $version {
     $pkgname = "${title}==${version}"
@@ -17,7 +18,7 @@ define kallithea::package (
   python::pip { "${title}@${venv}":
     pkgname    => $pkgname,
     virtualenv => $venv,
-    owner      => $::kallithea::app_user,
+    owner      => $::kallithea::params::app_user,
     require    => Exec["python_virtualenv_${venv}"],
     notify     => Class['kallithea::service'],
   }

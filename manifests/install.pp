@@ -3,15 +3,15 @@
 # This class is called from kallithea for install.
 #
 class kallithea::install (
-  $app_root         = $::kallithea::app_root,
-  $app_user         = $::kallithea::app_user,
-  $ldap_support     = $::kallithea::ldap_support,
-  $manage_git       = $::kallithea::manage_git,
-  $manage_python    = $::kallithea::manage_python,
-  $rcextensions     = $::kallithea::rcextensions,
-  $repo_root        = $::kallithea::repo_root,
-  $service_provider = $::kallithea::service_provider,
-  $version          = $::kallithea::version,
+  $app_root         = $::kallithea::params::app_root,
+  $app_user         = $::kallithea::params::app_user,
+  $ldap_support     = $::kallithea::params::ldap_support,
+  $manage_git       = $::kallithea::params::manage_git,
+  $manage_python    = $::kallithea::params::manage_python,
+  $rcextensions     = $::kallithea::params::rcextensions,
+  $repo_root        = $::kallithea::params::repo_root,
+  $service_provider = $::kallithea::params::service_provider,
+  $version          = $::kallithea::params::version,
 ) inherits kallithea::params {
 
   if $manage_git {

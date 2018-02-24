@@ -3,6 +3,10 @@ require 'rspec-puppet-facts'
 include RspecPuppetFacts
 
 RSpec.configure do |c|
-  c.default_facts = { :virtualenv_version => '13.1.2' }
+    c.default_facts = {
+      :virtualenv_version => '13.1.2',
+      :osfamily => 'Debian',
+      :operatingsystem => 'Ubuntu',
+      :lsbdistcodename => 'xenial',
+    }
 end
-
