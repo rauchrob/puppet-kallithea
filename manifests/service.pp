@@ -4,10 +4,10 @@
 # It ensure the service is running.
 #
 class kallithea::service (
-  $service_ensure = $::kallithea::service_ensure,
-  $service_enable = $::kallithea::service_enable,
-  $service_provider = $::kallithea::service_provider,
-) {
+  $service_ensure = $::kallithea::params::service_ensure,
+  $service_enable = $::kallithea::params::service_enable,
+  $service_provider = $::kallithea::params::service_provider,
+) inherits kallithea::params {
   service { 'kallithea':
     ensure   => $service_ensure,
     enable   => $service_enable,
