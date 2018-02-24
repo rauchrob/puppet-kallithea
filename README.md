@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/rauchrob/puppet-kallithea.svg?branch=master)](https://travis-ci.org/rauchrob/puppet-kallithea)
 [![Puppet Forge](http://img.shields.io/puppetforge/v/rauch/kallithea.svg)](https://forge.puppetlabs.com/rauch/kallithea)
-[![Dependency Status](https://gemnasium.com/rauchrob/puppet-kallithea.svg)](https://gemnasium.com/rauchrob/puppet-kallithea)
+[![Maintainability](https://api.codeclimate.com/v1/badges/31cb6b64b1465859c166/maintainability)](https://codeclimate.com/github/rauchrob/puppet-kallithea/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/31cb6b64b1465859c166/test_coverage)](https://codeclimate.com/github/rauchrob/puppet-kallithea/test_coverage)
 
 #### Table of Contents
 
@@ -19,7 +20,7 @@
 
 ## Overview
 
-This module lets you setup a [Kallithea](https://kallithea-scm.org) instance. 
+This module lets you setup a [Kallithea](https://kallithea-scm.org) instance.
 
 ## Module Description
 
@@ -29,11 +30,11 @@ Kallithea is *"a free software source code management system supporting two lead
 
 ### What kallithea affects
 
-* Required Packages for installing the kallithea python package (platform dependent) 
+* Required Packages for installing the kallithea python package (platform dependent)
 * The user under which Kallithea will run
 * The Kallithea users home, containing a Python virtualenv in which Kallithea gets installed
 * The Kallithea service
-* Installation of git (optionally) 
+* Installation of git (optionally)
 
 ### Setup Requirements
 
@@ -58,7 +59,7 @@ If everything worked well, you should be able to browse your Kallithea instance 
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
+Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here.
 
 ## Reference
 
@@ -101,7 +102,7 @@ Put the classes, types, and resources for customizing, configuring, and doing th
       }
     }
     ```
-  
+
   will create two settings `key1 = value1` and `key = value2` withing the `DEFAULT` section of Kallitheas configuration file.
 
   This parameter Will be ignored, if the `$config` parameter has been given.
@@ -139,7 +140,7 @@ This class lets you initialize the database backing Kallithea. You have to do th
 
 This define lets you install add ons for Kallithea by installing additional Python packages into Kallitheas virtualenv.
 
-##### Parameters 
+##### Parameters
 
 * `title`: The name of the Python package.
 
@@ -168,4 +169,3 @@ Support for Debian 6 is planned for future releases.
 ## Development
 
 See the `CONTRIBUTING.md` file, which gets distributed as part of this module archive for information on how to contribute.
-
