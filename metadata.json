@@ -1,7 +1,7 @@
 {
   "name": "rauch-kallithea",
-  "version": "0.4.3",
-  "author": "Robert Rauch (GNS Systems)",
+  "version": "1.0.0",
+  "author": "Robert Rauch",
   "summary": "Manage Kallithea, a free source code management system",
   "license": "Apache-2.0",
   "source": "https://github.com/rauchrob/puppet-kallithea",
