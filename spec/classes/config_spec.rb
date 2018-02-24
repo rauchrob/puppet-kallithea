@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'kallithea::config' do
 
-  default_params = { 
+  default_params = {
     :app_root => '/app/root',
     :app_user => 'myuser',
   }
@@ -10,6 +10,7 @@ describe 'kallithea::config' do
   config_file = '/app/root/kallithea.ini'
 
   context 'with default params' do
+    let(:pre_condition) { "service { 'kallithea': }" }
     let(:params) { default_params }
 
     it { is_expected.to contain_exec('initialize kallithea config').with_user('myuser') }
@@ -17,6 +18,7 @@ describe 'kallithea::config' do
   end
 
   context 'with config = "foo" set' do
+    let(:pre_condition) { "service { 'kallithea': }" }
     let(:params) { default_params.merge({ :config => 'foo' }) }
 
     it { is_expected.to contain_file(config_file).with_content('foo') }
@@ -24,6 +26,7 @@ describe 'kallithea::config' do
   end
 
   context 'with complex config_hash set' do
+    let(:pre_condition) { "service { 'kallithea': }" }
     let(:params) { default_params.merge({
       'config_hash' => {
         'sec1' => { 'key1' => 'val1', 'key2' => 'val2' },
@@ -38,12 +41,14 @@ describe 'kallithea::config' do
   end
 
   context 'with port = 1234 set' do
+    let(:pre_condition) { "service { 'kallithea': }" }
     let(:params) { default_params.merge({ :port => '1234' }) }
 
     it { is_expected.to contain_kallithea__ini_setting('server:main/port').with_value(1234) }
   end
 
   context 'with listen_ip = 0.0.0.0 set' do
+    let(:pre_condition) { "service { 'kallithea': }" }
     let(:params) { default_params.merge({ :listen_ip => '0.0.0.0' }) }
 
     it { is_expected.to contain_kallithea__ini_setting('server:main/host').with_value('0.0.0.0') }

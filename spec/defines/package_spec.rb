@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe 'kallithea::package' do
-
+  let(:pre_condition) { [
+      "exec { 'python_virtualenv_/my/venv': }",
+      "class { 'kallithea::service': }",
+  ] }
+  
   default_params = {
     :venv => '/my/venv',
   }

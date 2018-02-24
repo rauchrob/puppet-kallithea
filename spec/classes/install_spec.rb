@@ -1,12 +1,15 @@
 require 'spec_helper'
 
 describe 'kallithea::install' do
-  let(:facts) {{ 
+  let(:facts) {{
     :osfamily => 'Debian',
     :operatingsystem => 'Ubuntu',
+
   }}
 
-  default_params = { 
+  let(:pre_condition) { "class { 'kallithea::service': }" }
+
+  default_params = {
     :manage_python => true,
     :app_root => '/app/root',
     :app_user => 'myuser',
